@@ -1,0 +1,15 @@
+{
+  "name": "postgre-query-server",
+  "version": "0.0.1",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-promise-router": "^3.0.3",
+    "helmet": "^3.18.0",
+    "pg": "^7.8.2"
+  },
+  "scripts": {
+    "start": "NODE_ENV=production node ./server",
+    "forever-start": "NODE_ENV=production forever start ./server.js"
+  }
+}
