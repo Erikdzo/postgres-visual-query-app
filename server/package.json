@@ -11,5 +11,6 @@
   "scripts": {
     "start": "NODE_ENV=production node server.js",
     "pm2-start": "NODE_ENV=production pm2 start server.js"
-  }
+  },
+  "license": "MIT"
 }
