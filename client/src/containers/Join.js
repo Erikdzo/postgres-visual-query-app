@@ -120,7 +120,7 @@ class Join extends Component {
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
                             innerRef={provided.innerRef}
-                            className="col-md-8"
+
                         >
                             <CardBody>
                                 <Form>
@@ -154,7 +154,6 @@ class Join extends Component {
                                                 <div className="col-5">
                                                     <FormGroup className="m-0">
                                                         <CustomInput bsSize="sm" type="select" id="main_table"
-                                                                     className="text-primary"
                                                                      onChange={this.handleTableChange}
                                                                      defaultValue={JSON.stringify(defaultValue)}>
                                                             <option key={`${this.props.id}-null`}
