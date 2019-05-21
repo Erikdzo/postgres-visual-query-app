@@ -110,6 +110,8 @@ class Join extends Component {
 
         const isTableSelected = _.isEmpty(this.props.join.main_table.table_name);
 
+        const firstTable = this.props.tables[0].table_alias === "" ? `${this.props.tables[0].table_schema}.${this.props.tables[0].table_name}` : `${this.props.tables[0].table_alias}`;
+
         return (
             <div className="my-2">
                 <Draggable
@@ -135,7 +137,7 @@ class Join extends Component {
                                                                      style={{color: this.props.join.color}}/>
                                                 </div>
                                                 <div className="col-auto">
-                                                    {this.props.tables[0].table_alias === "" ? `${this.props.tables[0].table_schema}.${this.props.tables[0].table_name}` : `${this.props.tables[0].table_alias}`}
+                                                    {this.props.index === 0 ? firstTable : "result of the previous join"}
                                                 </div>
                                                 <div className="col-3">
                                                     <FormGroup className="m-0">

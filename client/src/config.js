@@ -1,1 +1,1 @@
-export const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:8000' : 'http://apex.ttu.ee:8080';
+export const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:8000/postgres-query/api' : 'http://apex.ttu.ee:8080/postgres-query/api';

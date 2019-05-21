@@ -20,9 +20,9 @@ export function connectToDatabase(state) {
             password: state.password
         };
         axios.all([
-            axiosClient.post(`/postgres-query/api/database/tables`, hostInfo),
-            axiosClient.post(`/postgres-query/api/database/columns`, hostInfo),
-            axiosClient.post(`/postgres-query/api/database/constraints`, hostInfo)])
+            axiosClient.post(`/database/tables`, hostInfo),
+            axiosClient.post(`/database/columns`, hostInfo),
+            axiosClient.post(`/database/constraints`, hostInfo)])
             .then(axios.spread((tables, columns, constraints) => {
                 dispatch({type: ADD_TABLES, payload: tables.data.rows});
                 dispatch({type: ADD_COLUMNS, payload: columns.data.rows});

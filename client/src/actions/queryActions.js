@@ -84,7 +84,7 @@ export function updateJoinsOrder(data) {
 export const query = (state) => ({
 
     type: ADD_RESULT,
-    payload: axiosClient.post(`/postgres-query/api/query/query`, {
+    payload: axiosClient.post(`/query/query`, {
         host: state.host,
         port: state.port,
         database: state.database,

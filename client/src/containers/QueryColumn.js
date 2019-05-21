@@ -199,7 +199,7 @@ class QueryColumn extends Component {
                                                                    onBlur={() => this.handleSave("column_aggregate")}
                                                                    onChange={this.handleChange}
                                                                    value={this.state.column_aggregate}
-                                                                   placeholder="Aggregate ex. SUM"/>
+                                                                   placeholder="Function ( Aggregate ex SUM; row level ex Upper)"/>
                                                             <InputGroupAddon addonType="append">
                                                                 <Button color="danger"
                                                                         onClick={() => this.handleRemove("column_aggregate")}>
