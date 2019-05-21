@@ -6,12 +6,18 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
 class DownloadSQLButton extends Component {
 
     static downloadContent(name, content) {
-        let atag = document.createElement("a");
-        let file = new Blob([content], {type: 'text/plain'});
-        atag.href = URL.createObjectURL(file);
-        atag.download = name;
-        document.body.appendChild(atag);
-        atag.click();
+
+        if (navigator.msSaveBlob) {
+            let blobObject = new Blob([content], {type: 'text/plain'});
+            window.navigator.msSaveOrOpenBlob(blobObject, name);
+        } else {
+            let atag = document.createElement("a");
+            let file = new Blob([content], {type: 'text/plain'});
+            atag.href = URL.createObjectURL(file);
+            atag.download = name;
+            document.body.appendChild(atag);
+            atag.click();
+        }
     }
 
     render() {
