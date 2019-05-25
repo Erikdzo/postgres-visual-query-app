@@ -160,7 +160,8 @@ class Join extends Component {
                                                                      onChange={this.handleTableChange}
                                                                      defaultValue={JSON.stringify(defaultValue)}>
                                                             <option key={`${this.props.id}-null`}
-                                                                    value={JSON.stringify(defaultValue)}>Select table
+                                                                    value={JSON.stringify(defaultValue)}>
+                                                                {translations[this.props.language.code].queryBuilder.joinMainTable}
                                                             </option>
                                                             {this.props.tables.map((table,index) => {
                                                                 const value = JSON.stringify(table);

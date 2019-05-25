@@ -4,6 +4,7 @@ import _ from 'lodash';
 import {updateJoin} from "../actions/queryActions";
 import {connect} from "react-redux";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
+import {translations} from "../utils/translations";
 
 class JoinCondition extends Component {
 
@@ -143,7 +144,7 @@ class JoinCondition extends Component {
                                      id="main_table_columns"
                                      onChange={this.handleMainColumnChange}
                                      defaultValue={""}>
-                            <option key={`${this.props.condition.id}-main-column-null`} value="">Select column</option>
+                            <option key={`${this.props.condition.id}-main-column-null`} value="">{translations[this.props.language.code].queryBuilder.joinConditionMainColumn}</option>
                             {this.props.join.main_table.columns.map(column => {
 
                                 const value = {
@@ -170,7 +171,7 @@ class JoinCondition extends Component {
                                      defaultValue={JSON.stringify(defaultValue)}>
 
                             <option key={`${this.props.condition.id}-secondary-table-null`}
-                                    value={JSON.stringify(defaultValue)}>Select table
+                                    value={JSON.stringify(defaultValue)}>{translations[this.props.language.code].queryBuilder.joinConditionSecondaryTable}
                             </option>
                             {this.props.tables.map(table => {
 
@@ -193,7 +194,7 @@ class JoinCondition extends Component {
                                      onChange={this.handleSecondaryColumnChange}
                                      defaultValue={""}>
 
-                            <option key={`${this.props.condition.id}-secondary-column-null`} value="">Select column
+                            <option key={`${this.props.condition.id}-secondary-column-null`} value="">{translations[this.props.language.code].queryBuilder.joinConditionSecondaryColumn}
                             </option>
                             {!_.isEmpty(this.props.condition.secondary_table.table_name) && this.props.condition.secondary_table.columns.map(column => {
 
@@ -220,7 +221,8 @@ class JoinCondition extends Component {
 
 const mapStateToProps = store => {
     return {
-        tables: store.query.tables
+        tables: store.query.tables,
+        language: store.settings.language
     }
 };
 

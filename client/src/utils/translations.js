@@ -37,7 +37,11 @@ export const translations = {
             aliasPh: "Alias",
             filterPh: "Filter ex. table_name > 10",
             functionPh: "Function ( Aggregate ex. SUM; row level ex. Upper)",
-            conditionH: "Add condition"
+            conditionH: "Add condition",
+            joinMainTable: "Select table",
+            joinConditionMainColumn: "Select column",
+            joinConditionSecondaryTable: "Select table",
+            joinConditionSecondaryColumn: "Select column"
         }
     },
     est: {
@@ -75,7 +79,11 @@ export const translations = {
             aliasPh: "Alias",
             filterPh: "Piirang nt. table_name > 10",
             functionPh: "Funktsioon ( Kokkuvõtte nt. SUM; reataseme nt. Upper)",
-            conditionH: "Lisa tingimus"
+            conditionH: "Lisa tingimus",
+            joinMainTable: "Vali tabel",
+            joinConditionMainColumn: "Vali veerg",
+            joinConditionSecondaryTable: "Vali tabel",
+            joinConditionSecondaryColumn: "Vali veerg"
         }
     }
 };
