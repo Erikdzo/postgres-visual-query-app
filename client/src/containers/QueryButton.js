@@ -19,7 +19,7 @@ class QueryButton extends Component {
     render() {
         return (
             <Button type="button" size="lg" color="primary" className="mr-2" onClick={this.handleOnClick}>
-                {translations[this.props.language.code]['queryPage']['queryB']}
+                {translations[this.props.language.code].queryBuilder.queryB}
             </Button>
         )
     }

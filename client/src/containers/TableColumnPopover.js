@@ -3,6 +3,8 @@ import {
     Popover, PopoverBody, PopoverHeader, Table
 } from "reactstrap";
 import {withToggle} from "../hocs/withToggle";
+import {translations} from "../utils/translations";
+import {connect} from "react-redux";
 
 class TableColumnPopover extends Component {
 
@@ -19,19 +21,19 @@ class TableColumnPopover extends Component {
         return (
             <Popover modifiers={modifiers} placement="right" trigger="legacy" isOpen={this.props.toggleStatus}
                      target={this.props.target} toggle={this.props.toggle}>
-                <PopoverHeader>Foreign key references</PopoverHeader>
+                <PopoverHeader>{translations[this.props.language.code].queryBuilder.foreignKeyH}</PopoverHeader>
                 <PopoverBody>
                     <Table bordered responsive className="table-sm">
                         <thead>
                         <tr>
                             <th>
-                                Schema
+                                {translations[this.props.language.code].queryBuilder.schemaTh}
                             </th>
                             <th>
-                                Table
+                                {translations[this.props.language.code].queryBuilder.tableTh}
                             </th>
                             <th>
-                                Column
+                                {translations[this.props.language.code].queryBuilder.columnTh}
                             </th>
                         </tr>
                         </thead>
@@ -54,5 +56,10 @@ class TableColumnPopover extends Component {
     }
 }
 
+const mapStateToProps = store => {
+    return {
+        language: store.settings.language
+    }
+};
 
-export default withToggle(TableColumnPopover);
+export default withToggle(connect(mapStateToProps)(TableColumnPopover));

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Input} from "reactstrap";
 import {search} from "../actions/databaseActions";
 import {connect} from "react-redux";
-
+import {translations} from "../utils/translations";
 class SearchBar extends Component {
 
     constructor(props) {
@@ -26,16 +26,22 @@ class SearchBar extends Component {
     render() {
         return (
             <div>
-                <Input bsSize="sm" type="text" id="searchBar" name="expr" placeholder="Search" value={this.state.expr} onChange={this.handleChange}/>
+                <Input bsSize="sm" type="text" id="searchBar" name="expr" placeholder={translations[this.props.language.code].sideBar.searchPh} value={this.state.expr} onChange={this.handleChange}/>
             </div>
         )
 
     }
 }
 
+const mapStateToProps = store => {
+    return {
+        language: store.settings.language
+    }
+};
+
 const mapDispatchToProps = dispatch => ({
     search(expr) {dispatch(search(expr))}
 });
 
 
-export default connect(null, mapDispatchToProps) (SearchBar);
+export default connect(mapStateToProps, mapDispatchToProps) (SearchBar);

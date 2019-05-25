@@ -3,7 +3,7 @@
 
 export const translations = {
     eng: {
-        landingPage: {
+        loginForm: {
             formHeader: "Connect to database",
             serverL: "Server",
             serverPh: "Enter server address",
@@ -17,15 +17,31 @@ export const translations = {
             passwordPh: "Enter password",
             formSubmit: "Connect"
         },
-        queryPage: {
+        sideBar: {
+            disconnectB: "Disconnect",
+            tablesH: "Tables",
+            schemaH: "Schema",
+            searchPh: "Search"
+        },
+        queryBuilder: {
             queryB: "Query",
             tablesH: "Tables",
             columnsH: "Columns",
-            disconnectB: "Disconnect"
+            joinsH: "Joins",
+            resultH: "Result",
+            aliasH: "Alias",
+            foreignKeyH: "Foreign key references",
+            tableTh: "Table",
+            schemaTh: "Schema",
+            columnTh: "Column/columns",
+            aliasPh: "Alias",
+            filterPh: "Filter ex. table_name > 10",
+            functionPh: "Function ( Aggregate ex. SUM; row level ex. Upper)",
+            conditionH: "Add condition"
         }
     },
     est: {
-        landingPage: {
+        loginForm: {
             formHeader: "Ühenda andmebaasiga",
             serverL: "Server",
             serverPh: "Sisesta serveri aadress",
@@ -39,11 +55,27 @@ export const translations = {
             passwordPh: "Sisesta parool",
             formSubmit: "Ühenda"
         },
-        queryPage: {
-            queryB: "Päri",
+        sideBar: {
+            disconnectB: "Välju",
+            tablesH: "Tabelid",
+            schemaH: "Skeem",
+            searchPh: "Otsi"
+        },
+        queryBuilder: {
+            queryB: "Käivita",
             tablesH: "Tabelid",
             columnsH: "Veerud",
-            disconnectB: "Katkesta"
+            joinsH: "Ühendused",
+            resultH: "Tulemus",
+            aliasH: "Alias",
+            foreignKeyH: "Välisvõtmete viited",
+            tableTh: "Tabel",
+            schemaTh: "Skeem",
+            columnTh: "Veerg/veerud",
+            aliasPh: "Alias",
+            filterPh: "Piirang nt. table_name > 10",
+            functionPh: "Funktsioon ( Kokkuvõtte nt. SUM; reataseme nt. Upper)",
+            conditionH: "Lisa tingimus"
         }
     }
 };

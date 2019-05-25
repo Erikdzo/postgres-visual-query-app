@@ -8,6 +8,7 @@ import {
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {Draggable} from 'react-beautiful-dnd';
 import _ from 'lodash';
+import {translations} from "../utils/translations";
 
 class QueryColumn extends Component {
 
@@ -164,7 +165,7 @@ class QueryColumn extends Component {
                                                             <Input className="text-dark" type="text" name="column_alias" id="column_alias"
                                                                    onBlur={() => this.handleSave("column_alias")}
                                                                    onChange={this.handleChange}
-                                                                   value={this.state.column_alias} placeholder="Alias"/>
+                                                                   value={this.state.column_alias} placeholder={translations[this.props.language.code].queryBuilder.aliasPh}/>
                                                             <InputGroupAddon addonType="append">
                                                                 <Button color="danger"
                                                                         onClick={() => this.handleRemove("column_alias")}>
@@ -181,7 +182,7 @@ class QueryColumn extends Component {
                                                                    onBlur={() => this.handleSave("column_filter")}
                                                                    onChange={this.handleChange}
                                                                    value={this.state.column_filter}
-                                                                   placeholder="Filter ex. table_name > 10"/>
+                                                                   placeholder={translations[this.props.language.code].queryBuilder.filterPh}/>
                                                             <InputGroupAddon addonType="append">
                                                                 <Button color="danger"
                                                                         onClick={() => this.handleRemove("column_filter")}>
@@ -199,7 +200,7 @@ class QueryColumn extends Component {
                                                                    onBlur={() => this.handleSave("column_aggregate")}
                                                                    onChange={this.handleChange}
                                                                    value={this.state.column_aggregate}
-                                                                   placeholder="Function ( Aggregate ex SUM; row level ex Upper)"/>
+                                                                   placeholder={translations[this.props.language.code].queryBuilder.functionPh}/>
                                                             <InputGroupAddon addonType="append">
                                                                 <Button color="danger"
                                                                         onClick={() => this.handleRemove("column_aggregate")}>
@@ -235,7 +236,8 @@ class QueryColumn extends Component {
 
 const mapStateToProps = (store) => {
     return {
-        distinct: store.query.distinct
+        distinct: store.query.distinct,
+        language: store.settings.language
     }
 };
 

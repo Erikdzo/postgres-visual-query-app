@@ -25,7 +25,7 @@ class DisconnectButton extends Component {
 
         return (
             <Button size="lg" className="btn-block my-2 px-2" color="danger" onClick={this.handleOnClick}>
-                {translations[this.props.language.code]['queryPage']['disconnectB']}</Button>
+                {translations[this.props.language.code].sideBar.disconnectB}</Button>
         )
     }
 }

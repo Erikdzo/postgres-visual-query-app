@@ -8,6 +8,7 @@ import {connect} from "react-redux";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
 import _ from 'lodash';
 import JoinCondition from "./JoinCondition";
+import {translations} from "../utils/translations";
 
 
 class Join extends Component {
@@ -180,7 +181,7 @@ class Join extends Component {
                                                     <Button className="mb-1" outline color="info" size="sm"
                                                             disabled={isTableSelected}
                                                             onClick={this.handleAddCondition}><FontAwesomeIcon
-                                                        icon="plus"/></Button> Add condition
+                                                        icon="plus"/></Button> {translations[this.props.language.code].queryBuilder.conditionH}
                                                 </div>
                                             </Row>
                                             {!_.isEmpty(this.props.join.conditions) &&
@@ -218,7 +219,8 @@ class Join extends Component {
 
 const mapStateToProps = store => {
     return {
-        tables: store.query.tables
+        tables: store.query.tables,
+        language: store.settings.language
     }
 };
 

@@ -4,8 +4,10 @@ import DisconnectButton from "../containers/DisconnectButton";
 import DatabaseViewer from "../containers/DatabaseViewer";
 import SchemaSelector from "../containers/SchemaSelector";
 import SearchBar from "../containers/SearchBar";
+import {translations} from "../utils/translations";
+import {connect} from "react-redux";
 
-const SideBar = () => {
+const SideBar = (props) => {
     return (
         <div className="d-flex flex-column w-100">
             <div className="">
@@ -16,17 +18,19 @@ const SideBar = () => {
             <SchemaSelector/>
             <SearchBar/>
 
-            <h5 className="mt-2">Tables</h5>
+            <h5 className="mt-2">{translations[props.language.code].sideBar.tablesH}</h5>
             <div className="d-flex flex-fill">
                 <DatabaseViewer/>
             </div>
-
-
-
-
 
         </div>
     )
 };
 
-export default SideBar
+const mapStateToProps = store => {
+    return {
+        language: store.settings.language
+    }
+};
+
+export default connect(mapStateToProps) (SideBar)

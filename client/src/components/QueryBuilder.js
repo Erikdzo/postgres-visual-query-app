@@ -13,7 +13,7 @@ import DownloadCSVButton from "../containers/DownloadCSVButton";
 const QueryBuilder = props => {
     return (
         <div className="mt-2 pr-2">
-            <h4>{translations[props.language.code]['queryPage']['tablesH']}</h4>
+            <h4>{translations[props.language.code].queryBuilder.tablesH}</h4>
             <div style={{minHeight: "40vh"}}>
                 {props.tables.map((table, index) => {
                     return <QueryTable key={`query-table-${index}`} id={`query-table-${index}`} data={table}/>

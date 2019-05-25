@@ -3,6 +3,8 @@ import {Col, Container, Nav, NavItem, NavLink, Row, TabContent, TabPane} from "r
 import QueryColumnList from "./QueryColumnList";
 import {withTabSwitcher} from "../hocs/withTabSwitcher";
 import JoinList from "./JoinList";
+import {translations} from "../utils/translations";
+import {connect} from "react-redux";
 
 const QueryTabs = props => {
     return (
@@ -15,7 +17,7 @@ const QueryTabs = props => {
                             props.toggle('1');
                         }}
                     >
-                        Columns
+                        {translations[props.language.code].queryBuilder.columnsH}
                     </NavLink>
                 </NavItem>
                 <NavItem>
@@ -25,10 +27,9 @@ const QueryTabs = props => {
                             props.toggle('3');
                         }}
                     >
-                        Joins
+                        {translations[props.language.code].queryBuilder.joinsH}
                     </NavLink>
                 </NavItem>
-
             </Nav>
             <TabContent activeTab={props.activeTab} style={{minHeight: "20vh"}}>
                 <TabPane tabId="1">
@@ -54,4 +55,10 @@ const QueryTabs = props => {
     )
 };
 
-export default withTabSwitcher(QueryTabs);
+const mapStateToProps = store => {
+    return {
+        language: store.settings.language
+    }
+};
+
+export default withTabSwitcher(connect(mapStateToProps) (QueryTabs));

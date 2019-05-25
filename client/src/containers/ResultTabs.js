@@ -3,6 +3,8 @@ import {Col, Container, Nav, NavItem, NavLink, Row, TabContent, TabPane} from "r
 import ResultTable from "./ResultTable";
 import ResultSQL from "./ResultSQL";
 import {withTabSwitcher} from "../hocs/withTabSwitcher";
+import {translations} from '../utils/translations';
+import {connect} from "react-redux";
 
 const ResultTabs = props => {
     return (
@@ -25,7 +27,7 @@ const ResultTabs = props => {
                             props.toggle('2');
                         }}
                     >
-                        Result
+                        {translations[props.language.code].queryBuilder.resultH}
                     </NavLink>
                 </NavItem>
             </Nav>
@@ -53,5 +55,10 @@ const ResultTabs = props => {
     )
 };
 
+const mapStateToProps = store => {
+    return {
+        language: store.settings.language
+    }
+};
 
-export default withTabSwitcher(ResultTabs);
+export default withTabSwitcher(connect(mapStateToProps)(ResultTabs));
