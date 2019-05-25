@@ -43,9 +43,9 @@ class QueryTable extends Component {
 
         return (
             <Card className="d-inline-flex m-2">
-                <QueryTableHeader target={this.state.target} data={this.props.data}
+                <QueryTableHeader target={this.props.id} data={this.props.data}
                                   handleRemoveTable={this.handleRemoveTable} handleCopy={this.handleCopy}/>
-                <QueryTableBody data={this.props.data}  constructData={this.constructData}/>
+                <QueryTableBody data={this.props.data} id={this.props.id}  constructData={this.constructData}/>
             </Card>
 
         )

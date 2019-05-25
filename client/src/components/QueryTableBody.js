@@ -10,9 +10,10 @@ const QueryTableBody = props => {
             <CardBody className="py-0 mt-2 px-2 ">
 
 
-                {props.data.columns.map(column => {
+                {props.data.columns.map((column, index) => {
                     return <TableColumn
-                        key={`${props.data.table_schema}_${props.data.table_name}_${props.data.id}_${column.column_name}`}
+                        key={`table-column-${index}`}
+                        id={`${props.id}-table-column-${index}`}
                         data={props.constructData(column)}/>
                 })}
 

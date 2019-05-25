@@ -17,7 +17,7 @@ class TableColumn extends Component {
         this.findForeignKeys = this.findForeignKeys.bind(this);
 
         this.state = {
-            target: `c_${props.data.table_schema}_${props.data.table_name.replace(" ", "")}_${props.data.column_name.replace(" ", "")}`,
+            target: props.id,
             foreignKeys: this.findForeignKeys()
         }
     }

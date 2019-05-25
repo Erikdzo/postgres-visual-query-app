@@ -15,8 +15,8 @@ const QueryBuilder = props => {
         <div className="mt-2 pr-2">
             <h4>{translations[props.language.code]['queryPage']['tablesH']}</h4>
             <div style={{minHeight: "40vh"}}>
-                {props.tables.map(table => {
-                    return <QueryTable key={`${table.table_schema}_${table.table_name}_${table.id}`} data={table}/>
+                {props.tables.map((table, index) => {
+                    return <QueryTable key={`query-table-${index}`} id={`query-table-${index}`} data={table}/>
                 })}
             </div>
 

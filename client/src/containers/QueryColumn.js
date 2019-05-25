@@ -92,7 +92,7 @@ class QueryColumn extends Component {
         const column_name = _.isEmpty(this.props.data.table_alias) ? `${this.props.data.table_name}.${this.props.data.column_name}` : `${this.props.data.table_alias}.${this.props.data.column_name}`;
         return (
             <Draggable
-                draggableId={`${this.props.data.table_schema}-${this.props.data.table_name}-${this.props.data.column_name}-${this.props.data.id}`}
+                draggableId={`${this.props.id}`}
                 index={this.props.index}>
                 {(provided) => (
                     <Card className="px-0 my-2"

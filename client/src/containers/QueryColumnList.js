@@ -4,6 +4,7 @@ import QueryColumn from "./QueryColumn";
 import {switchDistinct, updateColumnsOrder} from "../actions/queryActions";
 import {connect} from "react-redux";
 import {CustomInput} from "reactstrap";
+import _ from 'lodash';
 
 class QueryColumnList extends Component {
 
@@ -27,7 +28,7 @@ class QueryColumnList extends Component {
         }
 
 
-        const movedColumn = this.props.columns.find(column => draggableId.localeCompare(`${column.table_schema}-${column.table_name}-${column.column_name}-${column.id}`) === 0);
+        const movedColumn = this.props.columns.find((column, index) => _.isEqual(draggableId, `query-column-${column.id}`));
 
         const newColumns = Array.from(this.props.columns);
         newColumns.splice(source.index, 1);
@@ -52,9 +53,10 @@ class QueryColumnList extends Component {
                             >
                                 {this.props.columns.map((column, index) => {
                                     return <QueryColumn
-                                        key={`${column.table_schema}_${column.table_name}_${column.column_name}_${column.id}`}
-                                        data={column}
+                                        key={`query-column-${column.id}`}
+                                        id={`query-column-${column.id}`}
                                         index={index}
+                                        data={column}
                                     />
 
                                 })}

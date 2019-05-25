@@ -109,10 +109,10 @@ class DatabaseViewer extends Component {
             <div className="flex-fill">
                 <Scrollbars className="d-flex" autoHide>
                     <div className="mt-1 pr-2">
-                        {this.props.tables.map(table => {
+                        {this.props.tables.map((table, index) => {
 
                             const checked = this.props.queryTable.some(queryTable => _.isEqual(table.table_name, queryTable.table_name) && _.isEqual(table.table_schema, queryTable.table_schema));
-                            const id = `${table.table_schema}_${table.table_name.replace(" ", "")}`;
+                            const id = `database-table-${index}`;
                             return table.table_schema === this.props.selectedSchema && DatabaseViewer.filterTable(table, this.props.searchExpr) &&
                                 <DatabaseTable data={this.constructData(table)} checked={checked}
                                                key={id} id={id}
