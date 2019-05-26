@@ -258,7 +258,7 @@ export function buildQuery(data) {
 }
 
 function checkFieldCharacters(field) {
-    if (!_.isEmpty(field) &&(!/^[a-z]+$/.test(field))) {
+    if (!_.isEmpty(field) && (!/^[a-z0-9_?$]+$/.test(field))) {
         return `"${field}"`
     }
     return field
