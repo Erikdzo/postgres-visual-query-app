@@ -12,7 +12,11 @@ router.post('/query', (req, res) => {
     const query = {
         text: req.body.sql
     };
-
+    // db.query('SELECT $1::text FROM isik', ["eesnimi"]).then( queryRes => {
+    //     console.log(queryRes);
+    // }).catch( err => {
+    //     console.log(err);
+    // });
     db.query(query)
         .then(queryRes => {
                 res.json(queryRes);
