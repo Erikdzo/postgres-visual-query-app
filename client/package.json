@@ -12,6 +12,7 @@
     "bootstrap": "^4.3.1",
     "history": "^4.7.2",
     "lodash": "^4.17.11",
+    "pg-format": "^1.0.4",
     "randomcolor": "^0.5.4",
     "react": "^16.8.4",
     "react-app-polyfill": "^1.0.1",
