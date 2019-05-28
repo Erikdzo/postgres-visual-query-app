@@ -18,8 +18,7 @@ class QueryColumn extends Component {
         this.state = {
             column_alias: props.data.column_alias,
             column_filter: props.data.column_filter,
-            column_aggregate: props.data.column_aggregate,
-
+            filter_valid: true
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -56,6 +55,12 @@ class QueryColumn extends Component {
             [field]: ""
         };
 
+        if (_.isEqual(field, "column_filter")) {
+            this.setState({
+                filter_valid: true
+            })
+        }
+
         this.props.updateColumn(column);
     }
 
@@ -67,9 +72,26 @@ class QueryColumn extends Component {
             ...column,
             [field]: this.state[field]
         };
+        const array = ["select", "drop", "insert", "update", "delete", "alter", "create"];
+        let contains = false;
+        const filter = _.lowerCase(column.column_filter).split(" ");
+        array.forEach(el => {
+            if (filter.includes(el)) {
+                contains = true;
+            }
+        });
 
+        if (contains) {
+            this.setState({
+                filter_valid: false
+            });
+        } else {
+            this.setState({
+                filter_valid: true
+            });
+            this.props.updateColumn(column);
+        }
 
-        this.props.updateColumn(column);
     }
 
     handleSwitch(field) {
@@ -91,6 +113,9 @@ class QueryColumn extends Component {
         let order_direction = this.props.data.column_order_dir ? "ASC" : "DESC";
         let column_order_visibility = this.props.data.column_order ? "visible" : "invisible";
         const column_name = _.isEmpty(this.props.data.table_alias) ? `${this.props.data.table_name}.${this.props.data.column_name}` : `${this.props.data.table_alias}.${this.props.data.column_name}`;
+
+        let filter_valid = this.state.filter_valid ? "" : "is-invalid";
+
         return (
             <Draggable
                 draggableId={`${this.props.id}`}
@@ -179,35 +204,50 @@ class QueryColumn extends Component {
 
                                                         <InputGroup className="mr-2 my-1" size="sm">
                                                             <Input type="text-dark" name="column_filter" id="column_filter"
+                                                                   className={filter_valid}
                                                                    onBlur={() => this.handleSave("column_filter")}
                                                                    onChange={this.handleChange}
                                                                    value={this.state.column_filter}
                                                                    placeholder={translations[this.props.language.code].queryBuilder.filterPh}/>
+
                                                             <InputGroupAddon addonType="append">
                                                                 <Button color="danger"
                                                                         onClick={() => this.handleRemove("column_filter")}>
                                                                     <FontAwesomeIcon icon="times"/>
                                                                 </Button>
                                                             </InputGroupAddon>
+                                                            <div className="invalid-tooltip">Filter cannot contain following words: SELECT, DROP, INSERT, UPDATE, DELETE, ALTER, CREATE</div>
                                                         </InputGroup>
+
 
                                                 </div>
-                                                <div className="col-4">
+                                                <div className="col-4 d-flex">
 
-                                                        <InputGroup className="mr-2 my-1" size="sm">
-                                                            <Input type="text-dark" name="column_aggregate"
-                                                                   id="column_aggregate"
-                                                                   onBlur={() => this.handleSave("column_aggregate")}
-                                                                   onChange={this.handleChange}
-                                                                   value={this.state.column_aggregate}
-                                                                   placeholder={translations[this.props.language.code].queryBuilder.functionPh}/>
-                                                            <InputGroupAddon addonType="append">
-                                                                <Button color="danger"
-                                                                        onClick={() => this.handleRemove("column_aggregate")}>
-                                                                    <FontAwesomeIcon icon="times"/>
-                                                                </Button>
-                                                            </InputGroupAddon>
-                                                        </InputGroup>
+                                                    <CustomInput bsSize="sm" type="select" id="column_aggregate" className="align-self-center"
+                                                        value={this.props.data.column_aggregate} onChange={this.handleSave}>
+                                                        <option value="">Select function</option>
+                                                        <option value="AVG">AVG</option>
+                                                        <option value="BIT_AND">BIT_AND</option>
+                                                        <option value="BIT_OR">BIT_OR</option>
+                                                        <option value="BOOL_AND">BOOL_AND</option>
+                                                        <option value="BOOL_OR">BOOL_OR</option>
+                                                        <option value="COUNT">COUNT</option>
+                                                        <option value="MAX">MAX</option>
+                                                        <option value="MIN">MIN</option>
+                                                        <option value="SUM">SUM</option>
+                                                        <option value="ASCII">ASCII</option>
+                                                        <option value="BIT_LENGTH">BIT_LENGTH</option>
+                                                        <option value="CHAR_LENGTH">CHAR_LENGTH</option>
+                                                        <option value="INITCAP">INITCAP</option>
+                                                        <option value="LENGTH">LENGTH</option>
+                                                        <option value="LOWER">LOWER</option>
+                                                        <option value="OCTET_LENGTH">OCTET_LENGTH</option>
+                                                        <option value="REVERSE">REVERSE</option>
+                                                        <option value="UPPER">UPPER</option>
+                                                        <option value="TO_ASCII">TO_ASCII</option>
+                                                        <option value="TO_HEX">TO_HEX</option>
+                                                    </CustomInput>
+
                                                 </div>
                                             </Row>
 
