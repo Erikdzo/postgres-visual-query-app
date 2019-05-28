@@ -216,7 +216,7 @@ class QueryColumn extends Component {
                                                                     <FontAwesomeIcon icon="times"/>
                                                                 </Button>
                                                             </InputGroupAddon>
-                                                            <div className="invalid-tooltip">Filter cannot contain following words: SELECT, DROP, INSERT, UPDATE, DELETE, ALTER, CREATE</div>
+                                                            <div className="invalid-tooltip">{translations[this.props.language.code].tooltips.invalidFilter}</div>
                                                         </InputGroup>
 
 
