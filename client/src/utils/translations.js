@@ -44,7 +44,7 @@ export const translations = {
             joinConditionSecondaryColumn: "Select column"
         },
         tooltips: {
-            invalidFilter: "Filter cannot contain following words: SELECT, DROP, INSERT, UPDATE, DELETE, ALTER, CREATE"
+            invalidFilter: "Invalid filter condition"
         }
     },
     est: {
@@ -89,7 +89,7 @@ export const translations = {
             joinConditionSecondaryColumn: "Vali veerg"
         },
         tooltips: {
-            invalidFilter: "Piirang ei tohi sisaldada järgmiseid sõnu: SELECT, DROP, INSERT, UPDATE, DELETE, ALTER, CREATE"
+            invalidFilter: "Kehtetud tingimuse sisu"
         }
     }
 };

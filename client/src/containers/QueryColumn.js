@@ -9,6 +9,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {Draggable} from 'react-beautiful-dnd';
 import _ from 'lodash';
 import {translations} from "../utils/translations";
+import {bannedWords} from "../utils/bannedWords";
 
 class QueryColumn extends Component {
 
@@ -64,18 +65,18 @@ class QueryColumn extends Component {
         this.props.updateColumn(column);
     }
 
-    handleSave(field) {
+    handleSave(e) {
 
         let column = _.cloneDeep(this.props.data);
 
         column = {
             ...column,
-            [field]: this.state[field]
+            [e.target.id]: e.target.value
         };
-        const array = ["select", "drop", "insert", "update", "delete", "alter", "create"];
+
         let contains = false;
         const filter = _.lowerCase(column.column_filter).split(" ");
-        array.forEach(el => {
+        bannedWords.forEach(el => {
             if (filter.includes(el)) {
                 contains = true;
             }
@@ -188,7 +189,7 @@ class QueryColumn extends Component {
 
                                                         <InputGroup className="mr-2 my-1" size="sm">
                                                             <Input className="text-dark" type="text" name="column_alias" id="column_alias"
-                                                                   onBlur={() => this.handleSave("column_alias")}
+                                                                   onBlur={this.handleSave}
                                                                    onChange={this.handleChange}
                                                                    value={this.state.column_alias} placeholder={translations[this.props.language.code].queryBuilder.aliasPh}/>
                                                             <InputGroupAddon addonType="append">
@@ -205,7 +206,7 @@ class QueryColumn extends Component {
                                                         <InputGroup className="mr-2 my-1" size="sm">
                                                             <Input type="text-dark" name="column_filter" id="column_filter"
                                                                    className={filter_valid}
-                                                                   onBlur={() => this.handleSave("column_filter")}
+                                                                   onBlur={this.handleSave}
                                                                    onChange={this.handleChange}
                                                                    value={this.state.column_filter}
                                                                    placeholder={translations[this.props.language.code].queryBuilder.filterPh}/>
