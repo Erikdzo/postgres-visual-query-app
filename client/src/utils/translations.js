@@ -26,6 +26,7 @@ export const translations = {
         },
         queryBuilder: {
             queryB: "Query",
+            querying: "Querying",
             tablesH: "Tables",
             columnsH: "Columns",
             joinsH: "Joins",
@@ -72,6 +73,7 @@ export const translations = {
         },
         queryBuilder: {
             queryB: "Käivita",
+            querying: "Käivitan",
             tablesH: "Tabelid",
             columnsH: "Veerud",
             joinsH: "Ühendused",

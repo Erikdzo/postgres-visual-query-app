@@ -15,9 +15,9 @@ import {
     UPDATE_TABLE,
     ADD_RESULT,
     DELETE_QUERY,
-    QUERY_ERROR,
     GENERATE_SQL,
-    REMOVE_JOIN
+    REMOVE_JOIN,
+    QUERYING
 } from '../actions/queryActions'
 
 import { ActionType } from 'redux-promise-middleware';
@@ -30,7 +30,8 @@ export const INITIAL_STATE = {
     joins: [],
     error: null,
     lastColumnId: 0,
-    lastTableId: 0
+    lastTableId: 0,
+    querying: false
 };
 
 
@@ -291,7 +292,8 @@ export default function reducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 result: action.payload.data,
-                error: null
+                error: null,
+                querying: false
             }
         }
         case UPDATE_JOINS_ORDER: {
@@ -320,7 +322,14 @@ export default function reducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 error: action.payload.response.data,
-                result: null
+                result: null,
+                querying: false
+            }
+        }
+        case QUERYING: {
+            return {
+                ...state,
+                querying: true
             }
         }
         default:

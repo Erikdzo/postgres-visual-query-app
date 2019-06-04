@@ -6,8 +6,8 @@ import {translations} from "../utils/translations";
 
 class QueryButton extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.handleOnClick = this.handleOnClick.bind(this)
     }
@@ -19,7 +19,14 @@ class QueryButton extends Component {
     render() {
         return (
             <Button type="button" size="lg" color="primary" className="mr-2" onClick={this.handleOnClick}>
-                {translations[this.props.language.code].queryBuilder.queryB}
+                {this.props.querying ?
+                    <div className="d-flex align-items-center">
+                        <div className="mr-2">{translations[this.props.language.code].queryBuilder.querying}</div>
+                        <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"/>
+                    </div>
+                    :
+                    translations[this.props.language.code].queryBuilder.queryB}
+
             </Button>
         )
     }
@@ -33,7 +40,8 @@ const mapStateToProps = (store) => {
         user: store.host.user,
         password: store.host.password,
         sql: store.query.sql,
-        language: store.settings.language
+        language: store.settings.language,
+        querying: store.query.querying
     }
 };
 

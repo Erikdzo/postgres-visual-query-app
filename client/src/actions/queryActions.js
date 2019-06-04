@@ -16,6 +16,7 @@ export const UPDATE_JOIN = 'UPDATE_JOIN';
 export const REMOVE_JOIN = 'REMOVE_JOIN';
 export const REMOVE_COLUMN = 'REMOVE_COLUMN';
 export const DELETE_QUERY = 'DELETE_QUERY';
+export const QUERYING = 'QUERYING';
 
 export function addColumn(data) {
     return function (dispatch) {
@@ -81,8 +82,14 @@ export function updateJoinsOrder(data) {
     }
 }
 
-export const query = (state) => ({
+export function query(state) {
+    return function (dispatch) {
+        dispatch({type: QUERYING});
+        dispatch(queryAction(state))
+    }
+}
 
+export const queryAction = (state) => ({
     type: ADD_RESULT,
     payload: axiosClient.post(`/query/query`, {
         host: state.host,
