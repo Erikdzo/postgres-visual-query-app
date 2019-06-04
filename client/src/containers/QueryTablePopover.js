@@ -51,7 +51,7 @@ class QueryTablePopover extends Component {
 
     render() {
         return (
-            <Popover trigger="legacy" placement="bottom" isOpen={this.props.toggleStatus} target={this.props.target}
+            <Popover trigger="legacy" placement="bottom" isOpen={this.props.toggleStatus} target={this.props.target} delay={{show: 0, hide: 0}}
                      toggle={this.props.toggle}>
                 <PopoverBody>
                     <InputGroup size="sm">

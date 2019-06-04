@@ -20,7 +20,7 @@ class TableColumnPopover extends Component {
         ;
         return (
             <Popover modifiers={modifiers} placement="right" trigger="legacy" isOpen={this.props.toggleStatus}
-                     target={this.props.target} toggle={this.props.toggle}>
+                     target={this.props.target} toggle={this.props.toggle} delay={{show: 0, hide: 0}}>
                 <PopoverHeader>{translations[this.props.language.code].queryBuilder.foreignKeyH}</PopoverHeader>
                 <PopoverBody>
                     <Table bordered responsive className="table-sm">
