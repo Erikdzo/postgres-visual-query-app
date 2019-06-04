@@ -43,7 +43,8 @@ export const translations = {
             joinMainTable: "Select table",
             joinConditionMainColumn: "Select column",
             joinConditionSecondaryTable: "Select table",
-            joinConditionSecondaryColumn: "Select column"
+            joinConditionSecondaryColumn: "Select column",
+            selectFunction: "Select function"
         },
         tooltips: {
             invalidFilter: "Invalid filter condition",
@@ -92,7 +93,8 @@ export const translations = {
             joinMainTable: "Vali tabel",
             joinConditionMainColumn: "Vali veerg",
             joinConditionSecondaryTable: "Vali tabel",
-            joinConditionSecondaryColumn: "Vali veerg"
+            joinConditionSecondaryColumn: "Vali veerg",
+            selectFunction: "Vali funktsioon"
         },
         tooltips: {
             invalidFilter: "Kehtetud tingimuse sisu",

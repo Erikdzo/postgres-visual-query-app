@@ -218,7 +218,7 @@ class QueryColumn extends Component {
                                                                  className="my-1 align-self-start"
                                                                  value={this.props.data.column_aggregate}
                                                                  onChange={this.handleSave}>
-                                                        <option value="">Select function</option>
+                                                        <option value="">{translations[this.props.language.code].queryBuilder.selectFunction}</option>
                                                         <option value="AVG">AVG</option>
                                                         <option value="BIT_AND">BIT_AND</option>
                                                         <option value="BIT_OR">BIT_OR</option>
