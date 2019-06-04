@@ -18,7 +18,7 @@ class QueryButton extends Component {
 
     render() {
         return (
-            <Button type="button" size="lg" color="primary" className="mr-2" onClick={this.handleOnClick}>
+            <Button type="button" size="lg" color="primary" className="mr-2" onClick={this.handleOnClick} disabled={this.props.querying}>
                 {this.props.querying ?
                     <div className="d-flex align-items-center justify-content-center">
                         <div className="mr-2">{translations[this.props.language.code].queryBuilder.querying}</div>
