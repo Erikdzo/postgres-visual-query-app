@@ -46,7 +46,9 @@ export const translations = {
             joinConditionSecondaryColumn: "Select column"
         },
         tooltips: {
-            invalidFilter: "Invalid filter condition"
+            invalidFilter: "Invalid filter condition",
+            copyColumn: "Copy column",
+            removeColumn: "Remove column"
         }
     },
     est: {
@@ -93,7 +95,9 @@ export const translations = {
             joinConditionSecondaryColumn: "Vali veerg"
         },
         tooltips: {
-            invalidFilter: "Kehtetud tingimuse sisu"
+            invalidFilter: "Kehtetud tingimuse sisu",
+            copyColumn: "Kopeeri veerg",
+            removeColumn: "Eemalda veerg"
         }
     }
 };
