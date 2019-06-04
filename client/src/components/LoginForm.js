@@ -39,7 +39,11 @@ const LoginForm = props => (
             </FormGroup>
             <Button color="primary" type="submit" className="btn-block" disabled={props.connecting}>
                 {props.connecting ?
-                    <div>{translations[props.language.code].loginForm.connecting} <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"/></div> :
+                    <div className="d-flex align-items-center justify-content-center">
+                        <div className="mr-2">{translations[props.language.code].loginForm.connecting}</div>
+                        <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"/>
+                    </div>
+                    :
                     translations[props.language.code].loginForm.formSubmit}
 
             </Button>

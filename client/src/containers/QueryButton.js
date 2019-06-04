@@ -20,7 +20,7 @@ class QueryButton extends Component {
         return (
             <Button type="button" size="lg" color="primary" className="mr-2" onClick={this.handleOnClick}>
                 {this.props.querying ?
-                    <div className="d-flex align-items-center">
+                    <div className="d-flex align-items-center justify-content-center">
                         <div className="mr-2">{translations[this.props.language.code].queryBuilder.querying}</div>
                         <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"/>
                     </div>
