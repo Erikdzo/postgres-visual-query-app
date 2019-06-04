@@ -142,7 +142,7 @@ class QueryColumn extends Component {
                                         <div className="col-10 p-0">
 
                                             <Row form className="">
-                                                <div className=" col-auto p-0 d-flex">
+                                                <div className=" col-auto d-flex">
                                                     <CustomInput className="" type="checkbox"
                                                                  id={`display-${this.props.data.id}`}
                                                                  checked={this.props.data.display_in_query}
@@ -185,50 +185,7 @@ class QueryColumn extends Component {
                                                 </div>
                                             </Row>
                                             <Row form className="mb-2">
-
-                                                <div className="col-4 p-0">
-
-                                                    <InputGroup className="mr-2 my-1 align-self-start" size="sm">
-                                                        <Input className="text-dark" type="text" name="column_alias"
-                                                               id="column_alias"
-                                                               onBlur={this.handleSave}
-                                                               onChange={this.handleChange}
-                                                               value={this.state.column_alias}
-                                                               placeholder={translations[this.props.language.code].queryBuilder.aliasPh}/>
-                                                        <InputGroupAddon addonType="append">
-                                                            <Button color="danger"
-                                                                    onClick={() => this.handleRemove("column_alias")}>
-                                                                <FontAwesomeIcon icon="times"/>
-                                                            </Button>
-                                                        </InputGroupAddon>
-                                                    </InputGroup>
-
-                                                </div>
-                                                <div className="col-4">
-
-                                                    <InputGroup className="mr-2 my-1 align-self-start" size="sm">
-                                                        <Input type="text-dark" name="column_filter" id="column_filter"
-                                                               className={filter_valid}
-                                                               onBlur={this.handleSave}
-                                                               onChange={this.handleChange}
-                                                               value={this.state.column_filter}
-                                                               placeholder={translations[this.props.language.code].queryBuilder.filterPh}/>
-                                                        <div className="invalid-feedback order-1">
-                                                            {translations[this.props.language.code].tooltips.invalidFilter}
-                                                        </div>
-                                                        <InputGroupAddon addonType="append">
-                                                            <Button color="danger"
-                                                                    onClick={() => this.handleRemove("column_filter")}>
-                                                                <FontAwesomeIcon icon="times"/>
-                                                            </Button>
-                                                        </InputGroupAddon>
-
-                                                    </InputGroup>
-
-
-                                                </div>
-                                                <div className="col-4 d-flex">
-
+                                                <div className="col-auto">
                                                     <CustomInput bsSize="sm" type="select" id="column_aggregate"
                                                                  className="my-1 align-self-start"
                                                                  value={this.props.data.column_aggregate}
@@ -256,6 +213,42 @@ class QueryColumn extends Component {
                                                         <option value="TO_HEX">TO_HEX</option>
                                                     </CustomInput>
 
+                                                </div>
+                                                <div className="col-4">
+                                                    <InputGroup className="my-1 align-self-start" size="sm">
+                                                        <Input className="text-dark" type="text" name="column_alias"
+                                                               id="column_alias"
+                                                               onBlur={this.handleSave}
+                                                               onChange={this.handleChange}
+                                                               value={this.state.column_alias}
+                                                               placeholder={translations[this.props.language.code].queryBuilder.aliasPh}/>
+                                                        <InputGroupAddon addonType="append">
+                                                            <Button color="danger"
+                                                                    onClick={() => this.handleRemove("column_alias")}>
+                                                                <FontAwesomeIcon icon="times"/>
+                                                            </Button>
+                                                        </InputGroupAddon>
+                                                    </InputGroup>
+                                                </div>
+                                                <div className="col-4">
+                                                    <InputGroup className="my-1 align-self-start" size="sm">
+                                                        <Input type="text-dark" name="column_filter" id="column_filter"
+                                                               className={filter_valid}
+                                                               onBlur={this.handleSave}
+                                                               onChange={this.handleChange}
+                                                               value={this.state.column_filter}
+                                                               placeholder={translations[this.props.language.code].queryBuilder.filterPh}/>
+                                                        <div className="invalid-feedback order-1">
+                                                            {translations[this.props.language.code].tooltips.invalidFilter}
+                                                        </div>
+                                                        <InputGroupAddon addonType="append">
+                                                            <Button color="danger"
+                                                                    onClick={() => this.handleRemove("column_filter")}>
+                                                                <FontAwesomeIcon icon="times"/>
+                                                            </Button>
+                                                        </InputGroupAddon>
+
+                                                    </InputGroup>
                                                 </div>
                                             </Row>
 
