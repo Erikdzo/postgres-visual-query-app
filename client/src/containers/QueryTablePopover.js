@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {
-    Button,
-    Form, FormGroup, Input, InputGroup, InputGroupAddon, Label, Popover, PopoverBody
+    Button, Input, InputGroup, InputGroupAddon, Popover, PopoverBody
 } from "reactstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
 import {updateTable} from "../actions/queryActions";
@@ -22,12 +21,13 @@ class QueryTablePopover extends Component {
         this.handleRemove = this.handleRemove.bind(this);
         this.handleSave = this.handleSave.bind(this);
     }
+
     handleChange(e) {
-        this.setState({[e.target.name] : e.target.value});
+        this.setState({[e.target.name]: e.target.value});
     }
 
     handleRemove(field) {
-        this.setState({[field] : ""});
+        this.setState({[field]: ""});
 
         let table = _.cloneDeep(this.props.data);
 
@@ -51,17 +51,19 @@ class QueryTablePopover extends Component {
 
     render() {
         return (
-            <Popover trigger="legacy" placement="bottom" isOpen={this.props.toggleStatus} target={this.props.target} toggle={this.props.toggle}>
+            <Popover trigger="legacy" placement="bottom" isOpen={this.props.toggleStatus} target={this.props.target}
+                     toggle={this.props.toggle}>
                 <PopoverBody>
-                    <Form>
-                        <FormGroup className="p-0">
-                            <Label for="alias">{translations[this.props.language.code].queryBuilder.aliasH}</Label>
-                            <InputGroup size="sm">
-                                <Input type="text" name="table_alias" id="table_alias" onBlur={this.handleSave} onChange={this.handleChange} value={this.state.table_alias}/>
-                                <InputGroupAddon addonType="append"><Button color="danger" onClick={() => this.handleRemove("table_alias")}><FontAwesomeIcon icon="times"/></Button></InputGroupAddon>
-                            </InputGroup>
-                        </FormGroup>
-                    </Form>
+                    <InputGroup size="sm">
+                        <Input type="text" name="table_alias" id="table_alias"
+                               placeholder={translations[this.props.language.code].queryBuilder.aliasH}
+                               onBlur={this.handleSave} onChange={this.handleChange} value={this.state.table_alias}/>
+                        <InputGroupAddon addonType="append">
+                            <Button color="danger" onClick={() => this.handleRemove("table_alias")}>
+                                <FontAwesomeIcon icon="times"/>
+                            </Button>
+                        </InputGroupAddon>
+                    </InputGroup>
                 </PopoverBody>
             </Popover>
         )
@@ -80,4 +82,4 @@ const mapDispatchToProps = dispatch => ({
     }
 });
 
-export default withToggle(connect(mapStateToProps, mapDispatchToProps) (QueryTablePopover));
+export default withToggle(connect(mapStateToProps, mapDispatchToProps)(QueryTablePopover));
