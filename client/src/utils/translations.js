@@ -15,7 +15,8 @@ export const translations = {
             usernamePh: "Enter username",
             passwordL: "Password",
             passwordPh: "Enter password",
-            formSubmit: "Connect"
+            formSubmit: "Connect",
+            connecting: "Connecting"
         },
         sideBar: {
             disconnectB: "Disconnect",
@@ -60,7 +61,8 @@ export const translations = {
             usernamePh: "Sisesta kasutajanimi",
             passwordL: "Parool",
             passwordPh: "Sisesta parool",
-            formSubmit: "Ühenda"
+            formSubmit: "Sisene",
+            connecting: "Sisenen"
         },
         sideBar: {
             disconnectB: "Välju",

@@ -1,4 +1,5 @@
-import {UPDATE_HOST, DELETE_HOST, CONNECT_ERROR} from '../actions/hostActions'
+import {UPDATE_HOST, DELETE_HOST, CONNECT_ERROR, CONNECTING, CONNECTED} from '../actions/hostActions'
+
 
 export const INITIAL_STATE = {
     host: '',
@@ -6,7 +7,9 @@ export const INITIAL_STATE = {
     database: '',
     user: '',
     password: '',
-    error: ''
+    error: '',
+    connected: false,
+    connecting: false,
 };
 
 export default function reducer(state = INITIAL_STATE, action) {
@@ -31,7 +34,21 @@ export default function reducer(state = INITIAL_STATE, action) {
         case CONNECT_ERROR: {
             return {
                 ...state,
-                error: action.payload
+                error: action.payload,
+                connecting: false
+            }
+        }
+        case CONNECTED: {
+            return {
+                ...state,
+                connected: true,
+                connecting: false
+            }
+        }
+        case CONNECTING: {
+            return {
+                ...state,
+                connecting: true
             }
         }
         default:

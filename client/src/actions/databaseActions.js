@@ -1,17 +1,17 @@
-import {CONNECT_ERROR, UPDATE_HOST} from "./hostActions";
+import {CONNECT_ERROR, UPDATE_HOST, CONNECTING, CONNECTED} from "./hostActions";
 import axios from "axios";
 import axiosClient from '../utils/axiosClient';
 export const ADD_TABLES = 'ADD_TABLES';
 export const ADD_COLUMNS = 'ADD_COLUMNS';
 export const ADD_CONSTRAINTS = 'ADD_CONSTRAINTS';
-export const CONNECTED = 'CONNECTED';
+
 export const CHANGE_SELECTED_SCHEMA = 'CHANGE_SELECTED_SCHEMA';
 export const UPDATE_SEARCH_EXPR = 'UPDATE_SEARCH_EXPR';
 export const DELETE_DATABASE = 'DELETE_DATABASE';
 
 export function connectToDatabase(state) {
     return function (dispatch) {
-
+        dispatch({type: CONNECTING});
         const hostInfo = {
             host: state.host,
             port: state.port,

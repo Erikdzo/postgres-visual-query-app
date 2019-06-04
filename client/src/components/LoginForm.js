@@ -1,6 +1,7 @@
 import React from 'react';
-import {Form, FormGroup, Label, Input, Container} from 'reactstrap'
+import {Form, FormGroup, Label, Input, Container, Button} from 'reactstrap'
 import {translations} from "../utils/translations";
+import {connect} from "react-redux";
 
 const LoginForm = props => (
     <Container>
@@ -36,10 +37,20 @@ const LoginForm = props => (
                        placeholder={translations[props.language.code].loginForm.passwordPh}
                        value={props.password} onChange={props.handleChange}/>
             </FormGroup>
-            <Input type="submit" className="btn btn-primary"
-                   value={translations[props.language.code].loginForm.formSubmit}/>
+            <Button color="primary" type="submit" className="btn-block" disabled={props.connecting}>
+                {props.connecting ?
+                    <div>{translations[props.language.code].loginForm.connecting} <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"/></div> :
+                    translations[props.language.code].loginForm.formSubmit}
+
+            </Button>
         </Form>
     </Container>
 );
 
-export default LoginForm
+const mapStateToProps = store => {
+    return {
+        connecting: store.host.connecting
+    }
+};
+
+export default connect(mapStateToProps) (LoginForm)

@@ -32,7 +32,7 @@ class DisconnectButton extends Component {
 
 const mapStateToProps = (store) => {
     return ({
-        connected: store.database.connected,
+        connected: store.host.connected,
         language: store.settings.language
     })
 };

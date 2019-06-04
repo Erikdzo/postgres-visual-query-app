@@ -55,7 +55,7 @@ class LoginFormContainer extends Component {
 
 const mapStateToProps = (store) => {
     return {
-        connected: store.database.connected,
+        connected: store.host.connected,
         host: store.host.host,
         port: store.host.port,
         database: store.host.database,

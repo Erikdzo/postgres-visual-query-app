@@ -10,7 +10,7 @@ import {
 
 
 export const INITIAL_STATE = {
-    connected: false,
+
     schemas: [],
     tables: [],
     columns: [],
@@ -69,13 +69,6 @@ export default function reducer(state = INITIAL_STATE, action) {
         case DELETE_DATABASE: {
             return INITIAL_STATE
         }
-        case CONNECTED: {
-            return {
-                ...state,
-                connected: true
-            }
-        }
-
         default:
             return state;
     }
