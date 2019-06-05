@@ -1,7 +1,10 @@
-import React from 'react';
-import {Form, FormGroup, Label, Input, Container, Button} from 'reactstrap'
-import {translations} from "../utils/translations";
+import React, {Component} from 'react';
 import {connect} from "react-redux";
+import {Alert, Button, Container, Form, FormGroup, Input, Label} from "reactstrap";
+import {connectToDatabase} from "../actions/databaseActions";
+import {Redirect} from "react-router-dom";
+import {translations} from "../utils/translations";
+
 
 const LoginForm = props => (
     <Container>
@@ -51,10 +54,63 @@ const LoginForm = props => (
     </Container>
 );
 
-const mapStateToProps = store => {
+class LoginFormContainer extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            host: '',
+            port: 5432,
+            database: '',
+            user: '',
+            password: '',
+            toQuery: false
+        };
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+
+    handleSubmit(e) {
+        e.preventDefault();
+        this.props.connectToDatabase(this.state);
+    }
+
+    handleChange(e) {
+        this.setState({[e.target.name] : e.target.value})
+    }
+
+    render() {
+        if (this.props.connected
+            === true) {
+            return <Redirect to='/query'/>
+        }
+
+        return (
+            <div>
+                {this.props.error ? <Alert color="danger">{this.props.error}</Alert>: null}
+                <LoginForm {...this.state} language={this.props.language} handleSubmit={this.handleSubmit} handleChange={this.handleChange} connecting={this.props.connecting}/>
+            </div>
+        )
+    }
+}
+
+const mapStateToProps = (store) => {
     return {
+        connected: store.host.connected,
+        host: store.host.host,
+        port: store.host.port,
+        database: store.host.database,
+        user: store.host.user,
+        error: store.host.error,
+        language: store.settings.language,
         connecting: store.host.connecting
     }
 };
 
-export default connect(mapStateToProps) (LoginForm)
+const mapDispatchToProps = (dispatch) => ({
+    connectToDatabase(state) { dispatch(connectToDatabase(state))}
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginFormContainer)

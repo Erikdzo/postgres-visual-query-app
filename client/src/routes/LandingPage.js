@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import LoginFormContainer from "../containers/LoginFormContainer"
+import LoginFormContainer from "../components/LoginFormContainer"
 import {Col, Container, Row} from "reactstrap";
-import LanguageSwitcher from "../containers/LanguageSwitcher";
+import LanguageSwitcher from "../components/LanguageSwitcher";
 
 
 class LandingPage extends Component {
