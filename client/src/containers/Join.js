@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Draggable} from "react-beautiful-dnd";
 import {
-    Button, Card, CardBody, CustomInput, Form, FormGroup, Row
+    Button, Card, CardBody, CustomInput, Form, FormGroup, Row, UncontrolledTooltip
 } from "reactstrap";
 import {removeJoin, updateJoin} from "../actions/queryActions";
 import {connect} from "react-redux";
@@ -138,11 +138,11 @@ class Join extends Component {
                                                                      style={{color: this.props.join.color}}/>
                                                 </div>
                                                 <div className="col-auto">
-                                                    {this.props.index === 0 ? firstTable : "result of the previous join"}
+                                                    {this.props.index === 0 ? firstTable : translations[this.props.language.code].queryBuilder.joinResult}
                                                 </div>
                                                 <div className="col-3">
                                                     <FormGroup className="m-0">
-                                                        <CustomInput bsSize="sm" type="select" id="join-type"
+                                                        <CustomInput bsSize="sm" type="select" id={`${this.props.id}_join_type`}
                                                                      onChange={this.handleTypeChange}
                                                                      value={this.props.join.join_type}>
                                                             <option value="inner">INNER JOIN</option>
@@ -150,8 +150,10 @@ class Join extends Component {
                                                             <option value="right">RIGHT JOIN</option>
                                                             <option value="outer">OUTER JOIN</option>
                                                             <option value="cross">CROSS JOIN</option>
-
                                                         </CustomInput>
+                                                        <UncontrolledTooltip placement="top"  delay={{show: 500, hide: 0}} target={`${this.props.id}_join_type`}>
+                                                            {translations[this.props.language.code].tooltips.joinType}
+                                                        </UncontrolledTooltip>
                                                     </FormGroup>
                                                 </div>
                                                 <div className="col-5">
@@ -201,9 +203,12 @@ class Join extends Component {
                                         </div>
                                         <div className="col-1 d-flex ml-auto pr-2 justify-content-end">
                                             <FormGroup className="align-self-center m-0">
-                                                <Button size="sm" color="danger"
-                                                        onClick={this.handleRemove}><FontAwesomeIcon
-                                                    icon="times"/></Button>
+                                                <Button size="sm" color="danger" onClick={this.handleRemove} id={`${this.props.id}_remove_join`}>
+                                                    <FontAwesomeIcon icon="times"/>
+                                                </Button>
+                                                <UncontrolledTooltip placement="top"  delay={{show: 500, hide: 0}} target={`${this.props.id}_remove_join`}>
+                                                    {translations[this.props.language.code].tooltips.removeJoin}
+                                                </UncontrolledTooltip>
                                             </FormGroup>
                                         </div>
                                     </Row>

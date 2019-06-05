@@ -45,12 +45,15 @@ export const translations = {
             joinConditionSecondaryTable: "Select table",
             joinConditionSecondaryColumn: "Select column",
             selectFunction: "Select function",
-            addJoin: "Add join"
+            addJoin: "Add join",
+            joinResult: "result of previous join"
         },
         tooltips: {
             invalidFilter: "Invalid filter condition",
             copyColumn: "Copy column",
-            removeColumn: "Remove column"
+            removeColumn: "Remove column",
+            removeJoin: "Remove join",
+            joinType: "Join type"
         }
     },
     est: {
@@ -96,12 +99,16 @@ export const translations = {
             joinConditionSecondaryTable: "Vali tabel",
             joinConditionSecondaryColumn: "Vali veerg",
             selectFunction: "Vali funktsioon",
-            addJoin: "Lisa ühendus"
+            addJoin: "Lisa ühendus",
+            joinResult: "eelmise ühenduse tulemus"
+
         },
         tooltips: {
             invalidFilter: "Kehtetud tingimuse sisu",
             copyColumn: "Kopeeri veerg",
-            removeColumn: "Eemalda veerg"
+            removeColumn: "Eemalda veerg",
+            removeJoin: "Eemalda ühendus",
+            joinType: "Ühenduse tüüp"
         }
     }
 };
