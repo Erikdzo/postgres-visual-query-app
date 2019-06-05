@@ -6,6 +6,8 @@ import {addJoin, updateJoinsOrder} from "../actions/queryActions";
 import {Button} from "reactstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
 import _ from 'lodash'
+import {translations} from "../utils/translations";
+
 class JoinList extends Component {
 
     constructor(props) {
@@ -45,7 +47,12 @@ class JoinList extends Component {
     render() {
         return (
             <div>
-                <Button className="mb-1" outline color="info" size="sm" onClick={this.handleAddJoin} disabled={_.isEmpty(this.props.tables)}><FontAwesomeIcon icon="plus"/></Button>
+                <div className="text-info">
+                    <Button className="mb-1" outline color="info" size="sm" onClick={this.handleAddJoin}
+                            disabled={_.isEmpty(this.props.tables)}>
+                        <FontAwesomeIcon icon="plus"/>
+                    </Button> {translations[this.props.language.code].queryBuilder.addJoin}
+                </div>
                 <DragDropContext
                     onDragEnd={this.onDragEnd}
                 >
@@ -80,7 +87,8 @@ class JoinList extends Component {
 const mapStateToProps = store => {
     return {
         joins: store.query.joins,
-        tables: store.query.tables
+        tables: store.query.tables,
+        language: store.settings.language
     }
 };
 
