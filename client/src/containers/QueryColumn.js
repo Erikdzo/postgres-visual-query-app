@@ -3,14 +3,13 @@ import {addColumn, removeColumn, updateColumn} from "../actions/queryActions";
 import {connect} from "react-redux";
 import {
     Button, Card, CardBody, Container, CustomInput, Form, FormGroup, Input, InputGroup,
-    InputGroupAddon, Row, Tooltip
+    InputGroupAddon, Row, UncontrolledTooltip
 } from "reactstrap";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {Draggable} from 'react-beautiful-dnd';
 import _ from 'lodash';
 import {translations} from "../utils/translations";
 import {bannedWords} from "../utils/bannedWords";
-import {withToggle} from "../hocs/withToggle";
 
 
 const CopyButton = (props) =>
@@ -18,13 +17,11 @@ const CopyButton = (props) =>
         <Button size="sm" color="secondary" id={`${props.id}_copy`} className="mr-1" onClick={props.handleCopy}>
             <FontAwesomeIcon icon="copy"/>
         </Button>
-        <Tooltip placement="top" isOpen={props.toggleStatus} target={`${props.id}_copy`}
-                 toggle={props.toggle} delay={{show: 500, hide: 0}}>
+        <UncontrolledTooltip placement="top"  target={`${props.id}_copy`} delay={{show: 500, hide: 0}}>
             {translations[props.languageCode].tooltips.copyColumn}
-        </Tooltip>
+        </UncontrolledTooltip>
     </div>;
 
-const CopyButtonWithToggle = withToggle(CopyButton);
 
 const RemoveButton = (props) =>
     <div>
@@ -32,13 +29,10 @@ const RemoveButton = (props) =>
                 onClick={props.handleRemoveColumn}>
             <FontAwesomeIcon icon="times"/>
         </Button>
-        <Tooltip placement="top" isOpen={props.toggleStatus} target={`${props.id}_remove`}
-                 toggle={props.toggle} delay={{show: 500, hide: 0}}>
+        <UncontrolledTooltip placement="top"  target={`${props.id}_remove`} delay={{show: 500, hide: 0}}>
             {translations[props.languageCode].tooltips.removeColumn}
-        </Tooltip>
+        </UncontrolledTooltip>
     </div>;
-
-const RemoveButtonWithToggle = withToggle(RemoveButton);
 
 class QueryColumn extends Component {
 
@@ -283,8 +277,8 @@ class QueryColumn extends Component {
                                         </div>
                                         <div className="col d-flex w-100 ml-auto">
                                             <FormGroup className="align-self-center justify-content-end m-0 ml-auto">
-                                                <CopyButtonWithToggle id={this.props.id} languageCode={this.props.language.code} handleCopy={this.handleCopy}/>
-                                                <RemoveButtonWithToggle languageCode={this.props.language.code} handleRemoveColumn={this.handleRemoveColumn}/>
+                                                <CopyButton id={this.props.id} languageCode={this.props.language.code} handleCopy={this.handleCopy}/>
+                                                <RemoveButton languageCode={this.props.language.code} handleRemoveColumn={this.handleRemoveColumn}/>
                                             </FormGroup>
                                         </div>
                                     </Row>
