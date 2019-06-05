@@ -30,9 +30,6 @@ const QueryTableHeader = props => {
             <Button size="sm" className="align-self-start" color="danger" onClick={props.handleRemoveTable} id={`${props.target}_remove`}>
                 <FontAwesomeIcon icon="times"/>
             </Button>
-            <UncontrolledTooltip placement="top" target={`${props.target}_remove`} delay={{show: 500, hide: 0}} className="text-truncate">
-                {translations[props.language.code].tooltips.removeTable}
-            </UncontrolledTooltip>
             <QueryTablePopover target={props.target} data={props.data}/>
         </CardTitle>
     )

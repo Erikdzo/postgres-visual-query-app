@@ -206,9 +206,6 @@ class Join extends Component {
                                                 <Button size="sm" color="danger" onClick={this.handleRemove} id={`${this.props.id}_remove_join`}>
                                                     <FontAwesomeIcon icon="times"/>
                                                 </Button>
-                                                <UncontrolledTooltip placement="top"  delay={{show: 500, hide: 0}} target={`${this.props.id}_remove_join`}>
-                                                    {translations[this.props.language.code].tooltips.removeJoin}
-                                                </UncontrolledTooltip>
                                             </FormGroup>
                                         </div>
                                     </Row>

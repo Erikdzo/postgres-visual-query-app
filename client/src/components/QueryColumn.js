@@ -29,9 +29,6 @@ const RemoveButton = (props) =>
                 onClick={props.handleRemoveColumn}>
             <FontAwesomeIcon icon="times"/>
         </Button>
-        <UncontrolledTooltip placement="top"  target={`${props.id}_remove`} delay={{show: 500, hide: 0}}>
-            {translations[props.languageCode].tooltips.removeColumn}
-        </UncontrolledTooltip>
     </div>;
 
 class QueryColumn extends Component {
