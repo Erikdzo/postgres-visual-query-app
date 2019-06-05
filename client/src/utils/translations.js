@@ -56,7 +56,7 @@ export const translations = {
             copyTable: "Copy table",
             removeTable: "Remove table",
             columnAlias: "Rename column",
-            columnFilter: "Example: "
+            columnFilter: "Example: :c > 10 (:c is the shorthand for the name of the column)"
         }
     },
     est: {
@@ -114,7 +114,7 @@ export const translations = {
             copyTable: "Tabeli kopeerimine",
             removeTable: "Tabeli eemaldamine",
             columnAlias: "Veeru ümbernimetamine",
-            columnFilter: "Näide: ",
+            columnFilter: "Näide: :c > 10 (:c on veeru nime lühend)",
         }
     }
 };
