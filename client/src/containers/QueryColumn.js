@@ -244,6 +244,9 @@ class QueryColumn extends Component {
                                                                onChange={this.handleChange}
                                                                value={this.state.column_alias}
                                                                placeholder={translations[this.props.language.code].queryBuilder.aliasPh}/>
+                                                        <UncontrolledTooltip placement="top"  delay={{show: 500, hide: 0}} target="column_alias">
+                                                            {translations[this.props.language.code].tooltips.columnAlias}
+                                                        </UncontrolledTooltip>
                                                         <InputGroupAddon addonType="append">
                                                             <Button color="danger"
                                                                     onClick={() => this.handleRemove("column_alias")}>
@@ -263,6 +266,9 @@ class QueryColumn extends Component {
                                                         <div className="invalid-feedback order-1">
                                                             {translations[this.props.language.code].tooltips.invalidFilter}
                                                         </div>
+                                                        <UncontrolledTooltip placement="top"  delay={{show: 500, hide: 0}} target="column_filter">
+                                                            {translations[this.props.language.code].tooltips.columnFilter}
+                                                        </UncontrolledTooltip>
                                                         <InputGroupAddon addonType="append">
                                                             <Button color="danger"
                                                                     onClick={() => this.handleRemove("column_filter")}>

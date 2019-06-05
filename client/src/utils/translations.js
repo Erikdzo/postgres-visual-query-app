@@ -37,8 +37,7 @@ export const translations = {
             schemaTh: "Schema",
             columnTh: "Column/columns",
             aliasPh: "Alias",
-            filterPh: "Filter ex. table_name > 10",
-            functionPh: "Function ( Aggregate ex. SUM; row level ex. Upper)",
+            filterPh: "Filter",
             conditionH: "Add condition",
             joinMainTable: "Select table",
             joinConditionMainColumn: "Select column",
@@ -55,7 +54,9 @@ export const translations = {
             removeJoin: "Remove join",
             joinType: "Join type",
             copyTable: "Copy table",
-            removeTable: "Remove tabel"
+            removeTable: "Remove table",
+            columnAlias: "Rename column",
+            columnFilter: "Example: "
         }
     },
     est: {
@@ -93,26 +94,27 @@ export const translations = {
             schemaTh: "Skeem",
             columnTh: "Veerg/veerud",
             aliasPh: "Alias",
-            filterPh: "Piirang nt. table_name > 10",
-            functionPh: "Funktsioon ( Kokkuvõtte nt. SUM; reataseme nt. Upper)",
-            conditionH: "Lisa tingimus",
-            joinMainTable: "Vali tabel",
-            joinConditionMainColumn: "Vali veerg",
-            joinConditionSecondaryTable: "Vali tabel",
-            joinConditionSecondaryColumn: "Vali veerg",
-            selectFunction: "Vali funktsioon",
-            addJoin: "Lisa ühendus",
+            filterPh: "Piirang",
+            conditionH: "Tingimuse lisamine",
+            joinMainTable: "Tabeli valimine",
+            joinConditionMainColumn: "Veeru valimine",
+            joinConditionSecondaryTable: "Tabeli valimine",
+            joinConditionSecondaryColumn: "Veeru valimine",
+            selectFunction: "Funktsiooni valimine",
+            addJoin: "Ühenduse lisamine",
             joinResult: "eelmise ühenduse tulemus"
 
         },
         tooltips: {
             invalidFilter: "Kehtetud tingimuse sisu",
-            copyColumn: "Kopeeri veerg",
-            removeColumn: "Eemalda veerg",
-            removeJoin: "Eemalda ühendus",
+            copyColumn: "Veeru kopeerimine",
+            removeColumn: "Veeru eemaldamine",
+            removeJoin: "Ühenduse eemaldamine",
             joinType: "Ühenduse tüüp",
-            copyTable: "Kopeeri tabel",
-            removeTable: "Eemalda tabel"
+            copyTable: "Tabeli kopeerimine",
+            removeTable: "Tabeli eemaldamine",
+            columnAlias: "Veeru ümbernimetamine",
+            columnFilter: "Näide: ",
         }
     }
 };
