@@ -53,7 +53,9 @@ export const translations = {
             copyColumn: "Copy column",
             removeColumn: "Remove column",
             removeJoin: "Remove join",
-            joinType: "Join type"
+            joinType: "Join type",
+            copyTable: "Copy table",
+            removeTable: "Remove tabel"
         }
     },
     est: {
@@ -108,7 +110,9 @@ export const translations = {
             copyColumn: "Kopeeri veerg",
             removeColumn: "Eemalda veerg",
             removeJoin: "Eemalda ühendus",
-            joinType: "Ühenduse tüüp"
+            joinType: "Ühenduse tüüp",
+            copyTable: "Kopeeri tabel",
+            removeTable: "Eemalda tabel"
         }
     }
 };
