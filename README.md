@@ -4,11 +4,17 @@ Application that allows users to visually create PostgreSQL SELECT queries.
 
 ## Functionality
 
+### Database
+
+* View tables in a schema
+* Switch schemas
+* Search for tables
+
 ### Tables
 
 * Add/remove tables to/from query
 * Add alias to table
-* Copy tables 
+* Copy tables
 
 ### Columns
 
@@ -21,6 +27,7 @@ Application that allows users to visually create PostgreSQL SELECT queries.
 * GROUP BY
 * Change order of columns
 * Copy columns
+* Switch between displaying and not displaying column in query
 
 ### Join
 
@@ -31,7 +38,13 @@ Application that allows users to visually create PostgreSQL SELECT queries.
 ### Result
  
 * View built SQL
-* Run the query and see the results
+* Run the query and view the results
+* Download generated SQL
+* Download query results
+
+### Utility
+
+* Change the language (English, Estonian)
 
 ## Setup
 
