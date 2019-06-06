@@ -57,7 +57,7 @@ class TableColumn extends Component {
             <div className="d-flex align-items-center">
                 <ButtonGroup size="sm" className="btn-block my-1 p-0 px-1">
                     <Button color={btn_selected}
-                            className="text-left d-flex flex-row align-items-center w-100 px-1"
+                            className="text-left d-flex flex-row align-items-center w-100 px-1 border"
                             id={`${this.state.target}-type`}
                             onClick={this.handleOnChange}>
                             {this.props.data.constraints.some(c => c.constraint_type.localeCompare("PRIMARY KEY") === 0) &&
