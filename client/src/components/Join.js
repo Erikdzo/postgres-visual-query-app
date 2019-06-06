@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Draggable} from "react-beautiful-dnd";
 import {
-    Button, Card, CardBody, CustomInput, Form, FormGroup, Row, UncontrolledTooltip
+    Button, Card, CardBody, Container, CustomInput, Form, FormGroup, Row, UncontrolledTooltip
 } from "reactstrap";
 import {removeJoin, updateJoin} from "../actions/queryActions";
 import {connect} from "react-redux";
@@ -125,8 +125,9 @@ class Join extends Component {
                             innerRef={provided.innerRef}
 
                         >
-                            <CardBody>
+                            <CardBody className="py-2 px-0">
                                 <Form>
+                                    <Container fluid>
                                     <Row>
                                         <div className="col-auto d-flex">
                                             <FontAwesomeIcon className="align-self-center" icon="sort"/>
@@ -181,7 +182,7 @@ class Join extends Component {
                                             </Row>
                                             <Row form>
                                                 <div className="col-12 text-info">
-                                                    <Button className="mb-1" outline color="info" size="sm"
+                                                    <Button className="mb-2" outline color="info" size="sm"
                                                             disabled={isTableSelected}
                                                             onClick={this.handleAddCondition}><FontAwesomeIcon
                                                         icon="plus"/></Button> {translations[this.props.language.code].queryBuilder.conditionH}
@@ -189,7 +190,7 @@ class Join extends Component {
                                             </Row>
                                             {!_.isEmpty(this.props.join.conditions) &&
                                             <Card>
-                                                <CardBody className="py-0">
+                                                <CardBody className="py-0 px-2">
                                                     {this.props.join.conditions.map(condition => {
                                                         return (
                                                             <JoinCondition
@@ -209,6 +210,7 @@ class Join extends Component {
                                             </FormGroup>
                                         </div>
                                     </Row>
+                                    </Container>
                                 </Form>
 
                             </CardBody>
