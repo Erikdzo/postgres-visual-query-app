@@ -36,3 +36,16 @@ Application that allows users to visually create PostgreSQL SELECT queries.
 ## Setup
 
 The setup for front-end is described at [client](../master/client) and back-end at [server](../master/server)
+
+## Pictures
+
+### Login page
+![Login page image](../master/common/images/loginPage.png)
+
+### Query creation page
+
+![Query creation page](../master/common/images/queryPage.png)
+
+## Licence
+
+MIT
