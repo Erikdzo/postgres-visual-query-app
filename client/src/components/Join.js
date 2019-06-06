@@ -182,14 +182,14 @@ class Join extends Component {
                                             </Row>
                                             <Row form>
                                                 <div className="col-12 text-info">
-                                                    <Button className="mb-2" outline color="info" size="sm"
+                                                    <Button className="" outline color="info" size="sm"
                                                             disabled={isTableSelected}
                                                             onClick={this.handleAddCondition}><FontAwesomeIcon
                                                         icon="plus"/></Button> {translations[this.props.language.code].queryBuilder.conditionH}
                                                 </div>
                                             </Row>
                                             {!_.isEmpty(this.props.join.conditions) &&
-                                            <Card>
+                                            <Card className="mt-2">
                                                 <CardBody className="py-0 px-2">
                                                     {this.props.join.conditions.map(condition => {
                                                         return (

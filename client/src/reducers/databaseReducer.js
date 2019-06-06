@@ -3,7 +3,6 @@ import {
     ADD_COLUMNS,
     ADD_CONSTRAINTS,
     CHANGE_SELECTED_SCHEMA,
-    CONNECTED,
     UPDATE_SEARCH_EXPR,
     DELETE_DATABASE
 } from '../actions/databaseActions';

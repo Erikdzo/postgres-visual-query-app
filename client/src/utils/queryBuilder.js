@@ -213,8 +213,10 @@ function addJoinsToQuery(data, query) {
                 }
                 case "cross": {
                     addJoin(joinObj, on, query.cross_join);
+                    break;
                 }
-
+                default:
+                    break
             }
         }
     });
