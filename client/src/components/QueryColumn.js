@@ -135,7 +135,7 @@ class QueryColumn extends Component {
         const column_name = _.isEmpty(this.props.data.table_alias) ? `${this.props.data.table_name}.${this.props.data.column_name}` : `${this.props.data.table_alias}.${this.props.data.column_name}`;
 
         let filter_valid = this.state.filter_valid ? "" : "is-invalid";
-
+        console.log(this.props.data.table_alias);
         return (
             <Draggable
                 draggableId={`${this.props.id}`}
@@ -169,7 +169,10 @@ class QueryColumn extends Component {
                                                     />
                                                     <small
                                                         className="mr-2 align-self-center text-muted">{`${this.props.data.table_schema}`}</small>
-                                                    <h6 className="m-0 mr-2 align-self-center">{column_name}</h6>
+                                                    <h6 className="m-0 mr-2 align-self-center" id="column_name">{column_name}</h6>
+                                                    <UncontrolledTooltip placement="top"  delay={{show: 0, hide: 0}} target="column_name">
+                                                        {this.props.data.data_type}
+                                                    </UncontrolledTooltip>
                                                 </div>
                                                 <div className="col-auto">
                                                     <FormGroup>
