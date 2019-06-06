@@ -66,7 +66,7 @@ class TableColumn extends Component {
                             <div className="text-truncate d-flex">
                                 <div className="text-truncate">{this.props.data.column_name}</div>
                             </div>
-                            <div className="pl-3">
+                            <div className="ml-auto pl-3">
                                 <div className="bg-light rounded-pill">
                                     {this.props.joins.map(join => {
                                         return join.conditions.map((condition, index) => {

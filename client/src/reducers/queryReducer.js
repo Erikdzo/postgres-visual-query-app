@@ -247,7 +247,7 @@ export default function reducer(state = INITIAL_STATE, action) {
                 id: id,
                 type: "inner",
                 color: randomColor({
-                    luminosity: "light"
+                    luminosity: "bright"
                 }),
                 main_table: {
                     table_name: "",
