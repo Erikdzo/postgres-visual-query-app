@@ -246,13 +246,7 @@ describe('query actions', () => {
                 payload: {}
             };
 
-        moxios.stubRequest('/postgres-query/api/query/query', {
-            status: 200,
-            response: {}
-        });
-
-
-        store.dispatch(actions.query({})).then(() => {
+        store.dispatch(actions.queryAction({})).then(() => {
             expect(store.getActions()).toContainEqual(action);
         });
 

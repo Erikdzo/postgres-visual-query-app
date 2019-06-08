@@ -1,7 +1,25 @@
 import * as actions from '../../actions/databaseActions';
+import moxios from "moxios";
+import axiosClient from "../../utils/axiosClient";
+import thunk from "redux-thunk";
+import promise from "redux-promise-middleware";
+import configureMockStore from 'redux-mock-store';
+import {INITIAL_STATE} from "../../reducers/databaseReducer";
+import {CONNECTING} from "../../actions/hostActions";
 
+const middlewares = [thunk, promise];
+const mockStore = configureMockStore(middlewares);
 
 describe('database actions', () => {
+    let store;
+
+    beforeEach(() => {
+        store = mockStore(INITIAL_STATE);
+
+        moxios.install(axiosClient)
+    });
+    afterEach(() => moxios.uninstall(axiosClient));
+
     test('should create an action to update search expression', () => {
         const expr = "#BASE_TABLE";
 
@@ -31,26 +49,16 @@ describe('database actions', () => {
     });
 
     test('should create an action to connect to database', () => {
-        const payload = [];
+        const payload = {};
 
-        const actionList = [
-            {
-                type: actions.ADD_TABLES,
-                payload: payload
-            },
-            {
-                type: actions.ADD_COLUMNS,
-                payload: payload
-            },
-            {
-                type: actions.ADD_CONSTRAINTS,
-                payload: payload
-            }
-        ];
+        const action =
+            {type: CONNECTING}
+        ;
+
         const fn = actions.connectToDatabase(payload);
 
         fn((receivedAction) => {
-            expect(receivedAction).toEqual(actionList)
+            expect(receivedAction).toEqual(action)
         })
     })
 });

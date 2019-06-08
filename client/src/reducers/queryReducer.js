@@ -308,14 +308,12 @@ export default function reducer(state = INITIAL_STATE, action) {
         }
         case GENERATE_SQL: {
             const query = buildQuery(state);
+            console.log(JSON.stringify(state));
 
-            let queryStr = query.toString({separator: "\n"}).replace('\n', ' ');
-
-            queryStr = `${query};`;
 
             return {
                 ...state,
-                sql: queryStr
+                sql: query
             }
         }
         case `${ADD_RESULT}_${ActionType.Rejected}`: {

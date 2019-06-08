@@ -7,22 +7,28 @@ describe('query reducer', () => {
         expect(queryReducer(undefined, {})).toEqual(INITIAL_STATE)
     });
 
-    test('QUERY_ERROR adds query error to state', () => {
+    test('ADD_RESULT_REJECTED adds query error to state', () => {
 
-        const error = {
-            "message": "column room_id does not exist",
-            "code": "42703",
-            "position": "22"
+        const payload = {
+                response: {
+                    data: {
+                        message: "column room_id does not exist",
+                        code: "42703",
+                        position: "22"
+                    }
+                }
+
+
         };
 
         let state = queryReducer(INITIAL_STATE, {
-            type: "QUERY_ERROR",
-            payload: error
+            type: "ADD_RESULT_REJECTED",
+            payload: payload
         });
 
         expect(state).toEqual({
             ...INITIAL_STATE,
-            error: error
+            error: payload.response.data
         })
     });
 
@@ -35,7 +41,8 @@ describe('query reducer', () => {
             "column_name": "column_name"
         };
 
-        const columnResult = {"column_aggregate": "",
+        const columnResult = {
+            "column_aggregate": "",
             "column_alias": "",
             "column_distinct_on": false,
             "column_filter": "",
@@ -112,7 +119,6 @@ describe('query reducer', () => {
             type: "ADD_COLUMN",
             payload: column
         });
-
 
 
         expect(state).toEqual({
@@ -890,18 +896,21 @@ describe('query reducer', () => {
     });
 
     test('ADD_RESULT adds result', () => {
-        const result = {
-            result: "result"
+        const payload = {
+                data : {
+                    result: "result"
+                }
+
         };
 
         const state = queryReducer(INITIAL_STATE, {
-            type: 'ADD_RESULT',
-            payload: result
+            type: 'ADD_RESULT_FULFILLED',
+            payload: payload
         });
 
         expect(state).toEqual({
             ...INITIAL_STATE,
-            result: result
+            result: payload.data
         })
     });
 
@@ -922,14 +931,14 @@ describe('query reducer', () => {
             id: 1
         }];
 
-        const updatedJoins = [ {
+        const updatedJoins = [{
             type: "inner",
             table_name: "",
             table_schema: "",
             table_alias: "",
             on: "",
             id: 1
-        },{
+        }, {
             type: "inner",
             table_name: "",
             table_schema: "",
@@ -972,22 +981,5 @@ describe('query reducer', () => {
         expect(state).toEqual(INITIAL_STATE)
     });
 
-    test('QUERY_ERROR set error', () => {
 
-        const error = {
-            "message": "column column does not exist",
-            "code": "42703",
-            "position": "22"
-        };
-
-        const state = queryReducer(INITIAL_STATE, {
-            type: 'QUERY_ERROR',
-            payload: error
-        });
-
-        expect(state).toEqual({
-            ...INITIAL_STATE,
-            error: error
-        })
-    })
 });

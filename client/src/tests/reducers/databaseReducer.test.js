@@ -104,8 +104,7 @@ describe('database reducer', () => {
         });
 
         expect(state).toEqual({
-            ...INITIAL_STATE,
-            connected: true
+            ...INITIAL_STATE
         })
     });
 

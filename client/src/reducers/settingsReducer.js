@@ -1,6 +1,6 @@
 import {CHANGE_LANGUAGE} from "../actions/settingsActions";
 
-const DEFAULT_STATE = {
+export const DEFAULT_STATE = {
     language: {code: "eng", name: "English"}
 };
 

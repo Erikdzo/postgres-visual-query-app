@@ -19,8 +19,10 @@ export function buildQuery(data) {
     addColumnsToQuery(data, query);
 
     addTablesToQuery(data, query);
+    let queryStr = query.toString({separator: "\n"}).replace('\n', ' ');
 
-    return query.toString();
+    queryStr = `${query};`;
+    return queryStr;
 }
 
 function addColumnsToQuery(data, query) {
