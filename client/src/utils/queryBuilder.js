@@ -64,12 +64,9 @@ function addColumnsToQuery(data, query) {
                     let field = `${column.column_name}`;
 
                     if (column.column_aggregate.length === 0) {
-
                         addField(column.table_name, column.column_name);
-
                     } else {
-                        field = `${column.column_aggregate}(${field})`;
-
+                        field = `${column.column_aggregate}(${column.table_name}.${field})`;
                         query.field(field);
                     }
 
@@ -79,12 +76,10 @@ function addColumnsToQuery(data, query) {
 
                     if (column.column_aggregate.length === 0) {
                         addField(column.table_alias, column.column_name);
-
                     } else {
                         field = `${column.column_aggregate}(${field})`;
 
                         query.field(field);
-
                     }
                 }
             } else {
@@ -181,7 +176,6 @@ function addJoinsToQuery(data, query) {
     let joins = _.cloneDeep(data.joins);
 
     function addJoin(joinObj, on, joinFn) {
-
         if (!_.isEmpty(joinObj.main_table.table_alias)) {
             joinFn(`${format.ident(joinObj.main_table.table_schema)}.${format.ident(joinObj.main_table.table_name)}`,
                 `${format.ident(joinObj.main_table.table_alias)}`, on)
@@ -246,15 +240,10 @@ function buildJoinOn(join) {
             if (!_.isEmpty(condition.secondary_table.table_alias)) {
                 secondary_table = condition.secondary_table.table_alias
             }
-
             const conditionString = `${format.ident(main_table)}.${format.ident(condition.main_column)} =
              ${format.ident(secondary_table)}.${format.ident(condition.secondary_column)}`;
-
-
             conditionArray.push(conditionString);
         }
-
     });
-
     return conditionArray.join(" AND ")
 }
