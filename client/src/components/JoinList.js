@@ -4,11 +4,11 @@ import {DragDropContext, Droppable} from "react-beautiful-dnd";
 import Join from "./Join";
 import {addJoin, updateJoinsOrder} from "../actions/queryActions";
 import {Button} from "reactstrap";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import _ from 'lodash'
 import {translations} from "../utils/translations";
 
-class JoinList extends Component {
+export class JoinList extends Component {
 
     constructor(props) {
         super(props);
@@ -29,7 +29,6 @@ class JoinList extends Component {
         if (destination.droppableId === source.droppableId && destination.index === source.index) {
             return;
         }
-
 
         const movedJoins = this.props.joins.find(join => draggableId.localeCompare(`join-${join.id}`) === 0);
 
@@ -80,8 +79,6 @@ class JoinList extends Component {
             </div>
         )
     }
-
-
 }
 
 const mapStateToProps = store => {

@@ -5,13 +5,13 @@ import {
 } from "reactstrap";
 import {removeJoin, updateJoin} from "../actions/queryActions";
 import {connect} from "react-redux";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import _ from 'lodash';
 import JoinCondition from "./JoinCondition";
 import {translations} from "../utils/translations";
 
 
-class Join extends Component {
+export class Join extends Component {
 
     constructor(props) {
         super(props);
@@ -71,7 +71,6 @@ class Join extends Component {
             id = this.props.join.conditions[this.props.join.conditions.length - 1].id + 1;
         }
 
-
         const condition = {
             id: id,
             main_column: "",
@@ -94,7 +93,6 @@ class Join extends Component {
         };
 
         this.props.updateJoin(join);
-
     }
 
     handleRemove() {
@@ -182,10 +180,11 @@ class Join extends Component {
                                             </Row>
                                             <Row form>
                                                 <div className="col-12 text-info">
-                                                    <Button className="" outline color="info" size="sm"
+                                                    <Button className="" outline color="info" size="sm" id="addCondition"
                                                             disabled={isTableSelected}
-                                                            onClick={this.handleAddCondition}><FontAwesomeIcon
-                                                        icon="plus"/></Button> {translations[this.props.language.code].queryBuilder.conditionH}
+                                                            onClick={this.handleAddCondition}>
+                                                        <FontAwesomeIcon icon="plus"/>
+                                                    </Button> {translations[this.props.language.code].queryBuilder.conditionH}
                                                 </div>
                                             </Row>
                                             {!_.isEmpty(this.props.join.conditions) &&
@@ -230,12 +229,8 @@ const mapStateToProps = store => {
 };
 
 const mapDispatchToProps = dispatch => ({
-    updateJoin(data) {
-        dispatch(updateJoin(data))
-    },
-    removeJoin(data) {
-        dispatch(removeJoin(data))
-    }
+    updateJoin(data) {dispatch(updateJoin(data))},
+    removeJoin(data) {dispatch(removeJoin(data))}
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Join);

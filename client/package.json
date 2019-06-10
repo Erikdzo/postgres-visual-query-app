@@ -14,12 +14,12 @@
     "lodash": "^4.17.11",
     "pg-format": "^1.0.4",
     "randomcolor": "^0.5.4",
-    "react": "^16.8.4",
+    "react": "16.8.4",
     "react-app-polyfill": "^1.0.1",
     "react-beautiful-dnd": "^11.0.0",
     "react-csv": "^1.1.1",
     "react-custom-scrollbars": "^4.2.1",
-    "react-dom": "^16.8.4",
+    "react-dom": "16.8.4",
     "react-redux": "^6.0.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.8",
@@ -48,7 +48,10 @@
   ],
   "devDependencies": {
     "axios-mock-adapter": "^1.16.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "moxios": "^0.4.0",
+    "react-test-renderer": "16.8.4",
     "redux-mock-store": "^1.5.3"
   },
   "license": "MIT"

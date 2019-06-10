@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from "react-redux";
 
-class ResultSQL extends Component {
-
+export class ResultSQL extends Component {
 
     render() {
         return (

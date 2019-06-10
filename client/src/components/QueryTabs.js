@@ -6,7 +6,7 @@ import JoinList from "./JoinList";
 import {translations} from "../utils/translations";
 import {connect} from "react-redux";
 
-const QueryTabs = props => {
+export const QueryTabs = props => {
     return (
         <div>
             <Nav tabs className="flex-row">

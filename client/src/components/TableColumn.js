@@ -7,7 +7,7 @@ import TableColumnPopover from "./TableColumnPopover";
 import _ from 'lodash';
 import {withToggle} from "../hocs/withToggle";
 
-class TableColumn extends Component {
+export class TableColumn extends Component {
 
     constructor(props) {
         super(props);
@@ -52,7 +52,6 @@ class TableColumn extends Component {
                 enabled: false
             }
         };
-
         return (
             <div className="d-flex align-items-center">
                 <ButtonGroup size="sm" className="btn-block my-1 p-0 px-1">

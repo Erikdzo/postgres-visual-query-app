@@ -3,7 +3,7 @@ import {Input} from "reactstrap";
 import {search} from "../actions/databaseActions";
 import {connect} from "react-redux";
 import {translations} from "../utils/translations";
-class SearchBar extends Component {
+export class SearchBar extends Component {
 
     constructor(props) {
         super(props);

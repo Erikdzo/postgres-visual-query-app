@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 import {CustomInput} from "reactstrap";
 import _ from 'lodash';
 
-class QueryColumnList extends Component {
+export class QueryColumnList extends Component {
 
     constructor(props) {
         super(props);

@@ -4,7 +4,7 @@ import ReactTable from "react-table";
 import "react-table/react-table.css";
 import _ from 'lodash';
 
-class ResultTable extends Component {
+export class ResultTable extends Component {
 
 
     constructor(props) {

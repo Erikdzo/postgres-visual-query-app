@@ -5,7 +5,7 @@ import {changeSelectedSchema} from "../actions/databaseActions";
 import {withToggle} from "../hocs/withToggle";
 import {translations} from "../utils/translations";
 
-class SchemaSelector extends Component {
+export class SchemaSelector extends Component {
 
     handleOnClick(schema) {
         this.props.changeSelectedSchema(schema)

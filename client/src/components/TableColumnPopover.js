@@ -7,18 +7,18 @@ import {translations} from "../utils/translations";
 import {connect} from "react-redux";
 import {Scrollbars} from "react-custom-scrollbars";
 
-class TableColumnPopover extends Component {
+export class TableColumnPopover extends Component {
 
     render() {
         const modifiers = {
-                preventOverflow: {
-                    enabled: false,
-                },
-                hide: {
-                    enabled: false
-                }
+            preventOverflow: {
+                enabled: false,
+            },
+            hide: {
+                enabled: false
             }
-        ;
+        };
+
         return (
             <Popover modifiers={modifiers} placement="right" trigger="legacy" isOpen={this.props.toggleStatus}
                      target={this.props.target} toggle={this.props.toggle} delay={{show: 0, hide: 0}}>
@@ -52,7 +52,6 @@ class TableColumnPopover extends Component {
                             </tbody>
                         </Table>
                     </Scrollbars>
-
                 </PopoverBody>
             </Popover>
         )

@@ -2,14 +2,14 @@ import React, {Component} from 'react'
 import {
     Button, Input, InputGroup, InputGroupAddon, Popover, PopoverBody
 } from "reactstrap";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {updateTable} from "../actions/queryActions";
 import {connect} from "react-redux";
 import {withToggle} from "../hocs/withToggle";
 import _ from 'lodash';
 import {translations} from "../utils/translations";
 
-class QueryTablePopover extends Component {
+export class QueryTablePopover extends Component {
 
     constructor(props) {
         super(props);

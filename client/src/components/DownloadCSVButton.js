@@ -3,10 +3,10 @@ import {connect} from "react-redux";
 import { CSVLink} from "react-csv";
 import _ from 'lodash'
 import {Button} from "reactstrap";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
-class DownloadCSVButton extends Component {
+export class DownloadCSVButton extends Component {
 
     static getHeaders(result) {
         if (_.isNull(result)) {
@@ -38,8 +38,6 @@ class DownloadCSVButton extends Component {
         let disabled = _.isNull(this.props.result);
 
         return (
-
-
             <CSVLink className="mr-2" data={DownloadCSVButton.getData(this.props.result)} headers={DownloadCSVButton.getHeaders(this.props.result)} filename={"result.csv"}>
                 <Button disabled={disabled}>
                     <FontAwesomeIcon icon="download"/>

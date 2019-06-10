@@ -135,10 +135,6 @@ function addColumnsToQuery(data, query) {
                 column_name = `${format.ident(column.table_alias)}.${format.ident(column.column_name)}`
             }
 
-            if (!_.isEmpty(column.column_alias)) {
-                column_name = `${format.ident(column.column_alias)}`
-            }
-
             const column_filter = _.replace(column.column_filter, /:c/g, column_name);
 
             query.where(column_filter)

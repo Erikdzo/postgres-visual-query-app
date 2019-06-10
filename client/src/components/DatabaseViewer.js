@@ -4,7 +4,7 @@ import DatabaseTable from "./DatabaseTable";
 import {Scrollbars} from "react-custom-scrollbars";
 import _ from 'lodash';
 
-class DatabaseViewer extends Component {
+export class DatabaseViewer extends Component {
 
     constructor(props) {
         super(props);
@@ -24,12 +24,7 @@ class DatabaseViewer extends Component {
         let constraints = JSON.parse(JSON.stringify(this.props.constraints));
         constraints = constraints.filter(constraint => {
             return constraint.table_schema === data.table_schema && constraint.table_name === data.table_name
-        }).map(constraint => {
-
-            delete constraint.table_name;
-            delete constraint.table_schema;
-            return constraint
-        });
+        })
 
         let columns = JSON.parse(JSON.stringify(this.props.columns));
         columns = columns.filter(column => {
@@ -75,14 +70,10 @@ class DatabaseViewer extends Component {
                         if (!_.includes(table.table_name, splitExpr[1])) {
                             return false
                         }
-
                     }
                 }
                 return true
-
             }
-
-
         } else {
             if (_.endsWith(expr, " ")) {
 
@@ -95,12 +86,8 @@ class DatabaseViewer extends Component {
                 if (_.includes(table.table_name, expr)) {
                     return true
                 }
-
             }
-
         }
-
-
         return false
     }
 
@@ -110,18 +97,15 @@ class DatabaseViewer extends Component {
                 <Scrollbars className="d-flex" autoHide>
                     <div className="mt-1 pr-2">
                         {this.props.tables.map((table, index) => {
-
                             const checked = this.props.queryTable.some(queryTable => _.isEqual(table.table_name, queryTable.table_name) && _.isEqual(table.table_schema, queryTable.table_schema));
                             const id = `database-table-${index}`;
                             return table.table_schema === this.props.selectedSchema && DatabaseViewer.filterTable(table, this.props.searchExpr) &&
                                 <DatabaseTable data={this.constructData(table)} checked={checked}
                                                key={id} id={id}
                                 />
-
                         })}
                     </div>
                 </Scrollbars>
-
             </div>
         )
     }
@@ -138,6 +122,5 @@ const mapStateToProps = (store) => {
         searchExpr: store.database.searchExpr
     }
 };
-
 
 export default connect(mapStateToProps)(DatabaseViewer);

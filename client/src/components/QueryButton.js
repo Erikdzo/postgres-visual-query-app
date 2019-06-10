@@ -4,7 +4,7 @@ import {query} from "../actions/queryActions";
 import {Button} from "reactstrap";
 import {translations} from "../utils/translations";
 
-class QueryButton extends Component {
+export class QueryButton extends Component {
 
     constructor(props) {
         super(props);

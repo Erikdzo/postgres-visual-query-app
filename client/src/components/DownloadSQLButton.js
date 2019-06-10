@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {Button} from "reactstrap";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-class DownloadSQLButton extends Component {
+export class DownloadSQLButton extends Component {
 
     static downloadContent(name, content) {
 

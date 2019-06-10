@@ -4,7 +4,7 @@ import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from "reactstrap";
 import {languages} from "../utils/translations";
 import {changeLanguage} from "../actions/settingsActions";
 
-class LanguageSwitcher extends Component {
+export class LanguageSwitcher extends Component {
 
     constructor(props) {
         super(props);
@@ -24,8 +24,6 @@ class LanguageSwitcher extends Component {
     }
 
     handleOnClick(data) {
-        console.log("START");
-        console.log(data);
         this.props.changeLanguage(data)
     }
 

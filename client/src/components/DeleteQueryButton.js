@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import {Button} from "reactstrap";
 import {deleteQuery} from "../actions/queryActions";
 import {connect} from "react-redux";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-class DeleteQueryButton extends Component {
+export class DeleteQueryButton extends Component {
 
     constructor() {
         super();
@@ -18,7 +18,9 @@ class DeleteQueryButton extends Component {
 
     render() {
         return (
-            <Button color="danger" className="mr-2" onClick={this.handleOnClick}><FontAwesomeIcon icon="trash"/></Button>
+            <Button color="danger" className="mr-2" onClick={this.handleOnClick}>
+                <FontAwesomeIcon icon="trash"/>
+            </Button>
         )
     }
 }
@@ -26,6 +28,5 @@ class DeleteQueryButton extends Component {
 const mapDispatchToProps = (dispatch) => ({
     deleteQuery() {dispatch(deleteQuery())}
 });
-
 
 export default connect(null, mapDispatchToProps) (DeleteQueryButton)

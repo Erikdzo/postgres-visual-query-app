@@ -308,7 +308,6 @@ export default function reducer(state = INITIAL_STATE, action) {
         }
         case GENERATE_SQL: {
             const query = buildQuery(state);
-            console.log(JSON.stringify(state));
 
 
             return {

@@ -6,7 +6,7 @@ import {withTabSwitcher} from "../hocs/withTabSwitcher";
 import {translations} from '../utils/translations';
 import {connect} from "react-redux";
 
-const ResultTabs = props => {
+export const ResultTabs = props => {
     return (
         <div>
             <Nav tabs>

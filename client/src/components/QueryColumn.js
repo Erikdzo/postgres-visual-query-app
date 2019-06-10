@@ -31,7 +31,7 @@ const RemoveButton = (props) =>
         </Button>
     </div>;
 
-class QueryColumn extends Component {
+export class QueryColumn extends Component {
 
     constructor(props) {
         super(props);
@@ -135,7 +135,6 @@ class QueryColumn extends Component {
         const column_name = _.isEmpty(this.props.data.table_alias) ? `${this.props.data.table_name}.${this.props.data.column_name}` : `${this.props.data.table_alias}.${this.props.data.column_name}`;
 
         let filter_valid = this.state.filter_valid ? "" : "is-invalid";
-        console.log(this.props.data.table_alias);
         return (
             <Draggable
                 draggableId={`${this.props.id}`}
@@ -236,7 +235,7 @@ class QueryColumn extends Component {
                                                     </CustomInput>
 
                                                 </div>
-                                                <div className="col-4">
+                                                <div className="col-auto">
                                                     <InputGroup className="my-1 align-self-start" size="sm">
                                                         <Input className="text-dark" type="text" name="column_alias"
                                                                id="column_alias"

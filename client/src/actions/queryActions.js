@@ -10,7 +10,6 @@ export const UPDATE_COLUMNS_ORDER = 'UPDATE_COLUMNS_ORDER';
 export const UPDATE_TABLE = 'UPDATE_TABLE';
 export const UPDATE_JOINS_ORDER = 'UPDATE_JOINS_ORDER';
 export const ADD_RESULT = 'ADD_RESULT';
-export const QUERY_ERROR = 'QUERY_ERROR';
 export const ADD_JOIN = 'ADD_JOIN';
 export const UPDATE_JOIN = 'UPDATE_JOIN';
 export const REMOVE_JOIN = 'REMOVE_JOIN';

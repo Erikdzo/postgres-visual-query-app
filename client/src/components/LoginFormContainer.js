@@ -54,7 +54,7 @@ const LoginForm = props => (
     </Container>
 );
 
-class LoginFormContainer extends Component {
+export class LoginFormContainer extends Component {
 
     constructor() {
         super();
@@ -99,10 +99,6 @@ class LoginFormContainer extends Component {
 const mapStateToProps = (store) => {
     return {
         connected: store.host.connected,
-        host: store.host.host,
-        port: store.host.port,
-        database: store.host.database,
-        user: store.host.user,
         error: store.host.error,
         language: store.settings.language,
         connecting: store.host.connecting

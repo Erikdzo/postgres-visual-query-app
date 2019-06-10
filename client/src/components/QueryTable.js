@@ -6,7 +6,7 @@ import {
 import {addTable, removeTable} from "../actions/queryActions";
 import {connect} from "react-redux";
 import {translations} from "../utils/translations";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import QueryTablePopover from "./QueryTablePopover";
 import {Scrollbars} from "react-custom-scrollbars";
 import TableColumn from "./TableColumn";
@@ -55,7 +55,7 @@ const QueryTableBody = props => {
     )
 };
 
-class QueryTable extends Component {
+export class QueryTable extends Component {
 
     constructor(props) {
         super(props);
@@ -87,23 +87,19 @@ class QueryTable extends Component {
     }
 
     render() {
-
-
         return (
             <Card className="d-inline-flex m-2 pb-2">
                 <QueryTableHeader target={this.props.id} data={this.props.data} language={this.props.language}
                                   handleRemoveTable={this.handleRemoveTable} handleCopy={this.handleCopy}/>
                 <QueryTableBody data={this.props.data} id={this.props.id} constructData={this.constructData}/>
             </Card>
-
         )
     }
 }
 
 const mapStateToProps = store => {
     return {
-        language: store.settings.language,
-        columns: store.query.columns
+        language: store.settings.language
     }
 };
 

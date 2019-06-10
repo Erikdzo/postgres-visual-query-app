@@ -3,10 +3,10 @@ import {Button, CustomInput, InputGroup, InputGroupAddon, InputGroupText, Row} f
 import _ from 'lodash';
 import {updateJoin} from "../actions/queryActions";
 import {connect} from "react-redux";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {translations} from "../utils/translations";
 
-class JoinCondition extends Component {
+export class JoinCondition extends Component {
 
     constructor(props) {
         super(props);

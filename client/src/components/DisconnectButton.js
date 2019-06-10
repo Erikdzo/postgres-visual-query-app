@@ -5,7 +5,7 @@ import {Button} from "reactstrap";
 import {translations} from "../utils/translations";
 import {Redirect} from "react-router-dom";
 
-class DisconnectButton extends Component {
+export class DisconnectButton extends Component {
 
     constructor() {
         super();
@@ -13,8 +13,7 @@ class DisconnectButton extends Component {
         this.handleOnClick = this.handleOnClick.bind(this)
     }
 
-    handleOnClick(e) {
-        e.preventDefault();
+    handleOnClick() {
         this.props.disconnect();
     }
 
