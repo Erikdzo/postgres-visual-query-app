@@ -104,12 +104,8 @@ const mapStateToProps = store => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    removeTable(data) {
-        dispatch(removeTable(data))
-    },
-    addTable(data) {
-        dispatch(addTable(data))
-    }
+    removeTable(data) {dispatch(removeTable(data))},
+    addTable(data) {dispatch(addTable(data))}
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(QueryTable);

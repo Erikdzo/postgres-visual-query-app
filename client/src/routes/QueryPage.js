@@ -61,7 +61,7 @@ const QueryBuilder = props => {
     )
 };
 
-class QueryPage extends Component {
+export class QueryPage extends Component {
 
     render() {
         return (

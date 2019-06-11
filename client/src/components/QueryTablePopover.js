@@ -26,8 +26,8 @@ export class QueryTablePopover extends Component {
         this.setState({[e.target.name]: e.target.value});
     }
 
-    handleRemove(field) {
-        this.setState({[field]: ""});
+    handleRemove(e) {
+        this.setState({[e.target.id]: ""});
 
         let table = _.cloneDeep(this.props.data);
 
@@ -59,7 +59,7 @@ export class QueryTablePopover extends Component {
                                placeholder={translations[this.props.language.code].queryBuilder.aliasH}
                                onBlur={this.handleSave} onChange={this.handleChange} value={this.state.table_alias}/>
                         <InputGroupAddon addonType="append">
-                            <Button color="danger" onClick={() => this.handleRemove("table_alias")}>
+                            <Button color="danger" id="table_alias" onClick={this.handleRemove}>
                                 <FontAwesomeIcon icon="times"/>
                             </Button>
                         </InputGroupAddon>

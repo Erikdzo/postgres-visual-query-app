@@ -27,12 +27,7 @@ export class TableColumn extends Component {
     }
 
     handleOnChange() {
-        if (!this.props.columns.some(column => _.isEqual(column.table_id, this.props.data.table_id) && _.isEqual(column.column_name, this.props.data.column_name))) {
             this.props.addColumn(this.props.data)
-        } else {
-            this.props.removeColumn(this.props.data)
-        }
-
     }
 
     findForeignKeys() {
@@ -76,11 +71,8 @@ export class TableColumn extends Component {
                                                 <FontAwesomeIcon key={`condition-icon-${this.props.data.table_schema}-${this.props.data.table_name}-${this.props.data.column_name}-${index}`} className="mx-1" icon="link"
                                                                  style={{color: join.color}}/>
                                         });
-
-
                                     })}
                                 </div>
-
                         </div>
                     </Button>
                     <Tooltip placement="left" isOpen={this.props.toggleStatus} target={`${this.state.target}-type`} toggle={this.props.toggle} modifiers={modifiers} delay={{ hide: 0 }}>

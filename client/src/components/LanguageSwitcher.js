@@ -3,25 +3,17 @@ import {connect} from "react-redux";
 import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from "reactstrap";
 import {languages} from "../utils/translations";
 import {changeLanguage} from "../actions/settingsActions";
+import {withToggle} from "../hocs/withToggle";
 
 export class LanguageSwitcher extends Component {
 
     constructor(props) {
         super(props);
 
-        this.toggle = this.toggle.bind(this);
-        this.state = {
-            dropdownOpen: false
-        };
-
         this.handleOnClick = this.handleOnClick.bind(this);
     }
 
-    toggle() {
-        this.setState(prevState => ({
-            dropdownOpen: !prevState.dropdownOpen
-        }));
-    }
+
 
     handleOnClick(data) {
         this.props.changeLanguage(data)
@@ -29,7 +21,7 @@ export class LanguageSwitcher extends Component {
 
     render() {
         return (
-            <Dropdown  direction="right" size="sm" isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+            <Dropdown  direction="right" size="sm" isOpen={this.props.toggleStatus} toggle={this.props.toggle}>
                 <DropdownToggle  className="btn btn-light btn-outline-secondary" caret>
                     {this.props.language.name}
                 </DropdownToggle>
@@ -53,4 +45,4 @@ const mapDispatchToProps = (dispatch) => ({
     changeLanguage(data) {dispatch(changeLanguage(data))}
 });
 
-export default connect(mapStateToProps, mapDispatchToProps) (LanguageSwitcher)
+export default withToggle(connect(mapStateToProps, mapDispatchToProps) (LanguageSwitcher))

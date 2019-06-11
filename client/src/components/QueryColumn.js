@@ -63,20 +63,20 @@ export class QueryColumn extends Component {
         this.props.addColumn(this.props.data);
     }
 
-    handleRemove(field) {
+    handleRemove(e) {
         this.setState({
             ...this.state,
-            [field]: ""
+            [e.target.id]: ""
         });
 
         let column = _.cloneDeep(this.props.data);
 
         column = {
             ...column,
-            [field]: ""
+            [e.target.id]: ""
         };
 
-        if (_.isEqual(field, "column_filter")) {
+        if (_.isEqual(e.target.id, "column_filter")) {
             this.setState({
                 filter_valid: true
             })
@@ -86,7 +86,6 @@ export class QueryColumn extends Component {
     }
 
     handleSave(e) {
-
         let column = _.cloneDeep(this.props.data);
 
         column = {
@@ -112,20 +111,16 @@ export class QueryColumn extends Component {
             });
             this.props.updateColumn(column);
         }
-
     }
 
-    handleSwitch(field) {
-
+    handleSwitch(e) {
         let column = _.cloneDeep(this.props.data);
 
         column = {
             ...column,
-            [field]: !column[field]
+            [e.target.id]: !column[e.target.id]
         };
-
         this.props.updateColumn(column);
-
     }
 
     render() {
@@ -178,28 +173,28 @@ export class QueryColumn extends Component {
 
                                                         <CustomInput className="mr-2 "
                                                                      disabled={this.props.distinct} type="switch"
-                                                                     id={`distinct-on-${this.props.data.id}`}
+                                                                     id="column_distinct_on"
                                                                      checked={this.props.data.column_distinct_on}
-                                                                     onChange={() => this.handleSwitch("column_distinct_on")}
+                                                                     onChange={this.handleSwitch}
                                                                      label="DISTINCT ON"/>
                                                         <CustomInput className="mr-2"
                                                                      type="switch"
-                                                                     id={`group-by-${this.props.data.id}`}
+                                                                     id="column_group_by"
                                                                      checked={this.props.data.column_group_by}
-                                                                     onChange={() => this.handleSwitch("column_group_by")}
+                                                                     onChange={this.handleSwitch}
                                                                      label="GROUP BY"/>
 
                                                         <CustomInput className="mr-2"
                                                                      type="switch"
-                                                                     id={`order-${this.props.data.id}`}
+                                                                     id="column_order"
                                                                      checked={this.props.data.column_order}
-                                                                     onChange={() => this.handleSwitch("column_order")}
+                                                                     onChange={this.handleSwitch}
                                                                      label="ORDER"/>
 
                                                         <CustomInput className={column_order_visibility} type="switch"
-                                                                     id={`order-dir-${this.props.data.id}`}
+                                                                     id="column_order_dir"
                                                                      checked={this.props.data.column_order_dir}
-                                                                     onChange={() => this.handleSwitch("column_order_dir")}
+                                                                     onChange={"column_order_dir"}
                                                                      label={order_direction}/>
 
                                                     </FormGroup>
@@ -247,8 +242,8 @@ export class QueryColumn extends Component {
                                                             {translations[this.props.language.code].tooltips.columnAlias}
                                                         </UncontrolledTooltip>
                                                         <InputGroupAddon addonType="append">
-                                                            <Button color="danger"
-                                                                    onClick={() => this.handleRemove("column_alias")}>
+                                                            <Button color="danger" id="column_alias"
+                                                                    onClick={this.handleRemove}>
                                                                 <FontAwesomeIcon icon="times"/>
                                                             </Button>
                                                         </InputGroupAddon>
@@ -269,8 +264,8 @@ export class QueryColumn extends Component {
                                                             {translations[this.props.language.code].tooltips.columnFilter}
                                                         </UncontrolledTooltip>
                                                         <InputGroupAddon addonType="append">
-                                                            <Button color="danger"
-                                                                    onClick={() => this.handleRemove("column_filter")}>
+                                                            <Button color="danger" id="column_filter"
+                                                                    onClick={this.handleRemove}>
                                                                 <FontAwesomeIcon icon="times"/>
                                                             </Button>
                                                         </InputGroupAddon>
