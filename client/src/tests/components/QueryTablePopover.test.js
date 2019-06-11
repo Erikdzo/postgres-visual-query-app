@@ -73,5 +73,21 @@ describe('Component: QueryTablePopover', () => {
         component = shallow(<QueryTablePopover {...props}/>);
 
         expect(component).toMatchSnapshot()
+    });
+
+    test('QueryTablePopover handleRemove calls updateTable once', () => {
+        component = shallow(<QueryTablePopover {...props}/>);
+
+        component.instance().handleRemove({target: {id: "table_alias"}});
+
+        expect(props.updateTable.mock.calls.length).toBe(1);
+    });
+
+    test('QueryTablePopover handleSave calls updateTable once', () => {
+        component = shallow(<QueryTablePopover {...props}/>);
+
+        component.instance().handleSave();
+
+        expect(props.updateTable.mock.calls.length).toBe(1)
     })
 });

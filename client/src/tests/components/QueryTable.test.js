@@ -74,7 +74,30 @@ describe('Component: QueryTable', () => {
 
     test('QueryTable renders with default props', () => {
         component = shallow(<QueryTable {...props}/>);
-
         expect(component).toMatchSnapshot()
+    });
+
+    test('QueryTable handleCopy calls addTable calls', () => {
+        component = shallow(<QueryTable {...props}/>);
+
+        component.instance().handleCopy();
+
+        expect(props.addTable.mock.calls.length).toBe(1)
+    });
+
+    test('QueryTable handleRemoveTable calls addTable calls', () => {
+        component = shallow(<QueryTable {...props}/>);
+
+        component.instance().handleRemoveTable();
+
+        expect(props.removeTable.mock.calls.length).toBe(1)
+    });
+
+    test('QueryTable constructTable adds table alias to column', () => {
+        component = shallow(<QueryTable {...props}/>);
+
+        const result = component.instance().constructData({});
+
+        expect(result).toMatchObject({table_alias: ""})
     })
 });

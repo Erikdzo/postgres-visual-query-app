@@ -261,7 +261,7 @@ describe('query builder', () => {
         expected = "SELECT\n" +
             "asd.amet_kood AS qwe, amet.nimetus, amet.kirjeldus\n" +
             "FROM public.amet\n" +
-            "WHERE (qwe > 3);";
+            "WHERE (asd.amet_kood > 3);";
 
         expect(query).toEqual(expected);
     });

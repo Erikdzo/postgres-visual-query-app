@@ -121,4 +121,22 @@ describe('Component: TableColumn', () => {
 
         expect(component).toMatchSnapshot()
     });
+
+    test('TableColumn handleRemove calls removeColumn once', () => {
+        component = shallow(<TableColumn {...props}/>);
+
+        component.instance().handleRemove({});
+
+        expect(props.removeColumn.mock.calls.length).toBe(1)
+    });
+
+    test('TableColumn handleOnChange calls addColumn once', () => {
+        component = shallow(<TableColumn {...props}/>);
+
+        component.instance().handleOnChange({});
+
+        expect(props.addColumn.mock.calls.length).toBe(1)
+    })
+
+
 });

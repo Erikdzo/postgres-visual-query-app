@@ -1,6 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {QueryTabs} from "../../components/QueryTabs";
+import {withToggle} from "../../hocs/withToggle";
 
 describe('Component: QueryTabs', () => {
     let component, props;
@@ -16,5 +17,5 @@ describe('Component: QueryTabs', () => {
         component = shallow(<QueryTabs {...props}/>);
 
         expect(component).toMatchSnapshot()
-    })
+    });
 });

@@ -1,13 +1,14 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {QueryColumn} from "../../components/QueryColumn";
+import {Card, CardBody, Form} from "reactstrap";
 
 describe('Component: QueryColumn', () => {
 
-    let component;
+    let component, props;
 
-    test('QueryColumn renders with default props', () => {
-        const props = {
+    beforeEach(() => {
+        props = {
             distinct: false,
             language: {code: "eng"},
             updateColumn: jest.fn(),
@@ -45,9 +46,35 @@ describe('Component: QueryColumn', () => {
                 table_schema: "public"
             }
         };
+    });
 
+    test('QueryColumn renders with default props', () => {
         component = shallow(<QueryColumn {...props}/>);
 
         expect(component).toMatchSnapshot()
-    })
+    });
+
+    test('QueryColumn handleSave calls updateColumn once', () => {
+        component = shallow(<QueryColumn {...props}/>);
+
+        component.instance().handleSave({target: {id: "column_aggregate", value: "AVG"}});
+
+        expect(props.updateColumn.mock.calls.length).toBe(1);
+    });
+
+    test('QueryColumn handleRemove calls updateColumn once', () => {
+        component = shallow(<QueryColumn {...props}/>);
+
+        component.instance().handleRemove({target: "column_alias"});
+
+        expect(props.updateColumn.mock.calls.length).toBe(1);
+    });
+
+    test('QueryColumn handleSwitch calls updateColumn once', () => {
+        component = shallow(<QueryColumn {...props}/>);
+
+        component.instance().handleSwitch({target: "column_order"});
+
+        expect(props.updateColumn.mock.calls.length).toBe(1);
+    });
 });

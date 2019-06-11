@@ -4,119 +4,151 @@ import {JoinList} from "../../components/JoinList";
 
 describe('Component: JoinList', () => {
 
-    let component, tables, joins;
+    let component, props;
 
     beforeEach(() => {
-        tables = [
-            {
-                id: 1,
-                table_alias: "",
-                table_name: "amet",
-                table_schema: "public",
-                table_type: "BASE TABLE",
-                columns: [
-                    {
-                        column_name: "amet_kood",
-                        constraints: [],
-                        data_type: "smallint",
-                        ordinal_position: 1,
-                        table_alias: "",
-                        table_id: 1,
-                        table_name: "amet",
-                        table_schema: "public"
-                    },
-                    {
-                        column_name: "nimetus",
-                        constraints: [],
-                        data_type: "smallint",
-                        ordinal_position: 2,
-                        table_alias: "",
-                        table_id: 1,
-                        table_name: "amet",
-                        table_schema: "public"
-                    },
-                    {
-                        column_name: "kirjeldus",
-                        constraints: [],
-                        data_type: "smallint",
-                        ordinal_position: 3,
-                        table_alias: "",
-                        table_id: 1,
-                        table_name: "amet",
-                        table_schema: "public"
-                    }
-                ]
-            },
-            {
-                id: 2,
-                table_alias: "",
-                table_name: "asukoht",
-                table_schema: "public",
-                table_type: "BASE TABLE",
-                columns: [
-                    {
-                        column_name: "asukoht_kood",
-                        constraints: [],
-                        data_type: "smallint",
-                        ordinal_position: 1,
-                        table_alias: "",
-                        table_id: 1,
-                        table_name: "asukoht",
-                        table_schema: "public"
-                    },
-                    {
-                        column_name: "nimetus",
-                        constraints: [],
-                        data_type: "smallint",
-                        ordinal_position: 2,
-                        table_alias: "",
-                        table_id: 1,
-                        table_name: "asukoht",
-                        table_schema: "public"
-                    }
-                ]
-            }
-        ];
-
-        joins = [{
-            color: "#ddbf4f",
-            conditions: [],
-            id: 0,
-            main_table: {
-                table_alias: "",
-                table_name: "",
-                table_schema: "",
-                columns: [
-                    {
-                        column_name: "asukoht_kood",
-                        constraints: [],
-                        data_type: "smallint",
-                        ordinal_position: 1,
-                        table_alias: "",
-                        table_id: 2,
-                        table_name: "asukoht",
-                        table_schema: "public"
-                    },
-                    {
-                        column_name: "nimetus",
-                        constraints: [],
-                        data_type: "smallint",
-                        ordinal_position: 2,
-                        table_alias: "",
-                        table_id: 2,
-                        table_name: "asukoht",
-                        table_schema: "public"
-                    }
-                ]
-            },
-            type: "inner"
-        }];
+        props = {
+            tables: [
+                {
+                    id: 1,
+                    table_alias: "",
+                    table_name: "amet",
+                    table_schema: "public",
+                    table_type: "BASE TABLE",
+                    columns: [
+                        {
+                            column_name: "amet_kood",
+                            constraints: [],
+                            data_type: "smallint",
+                            ordinal_position: 1,
+                            table_alias: "",
+                            table_id: 1,
+                            table_name: "amet",
+                            table_schema: "public"
+                        },
+                        {
+                            column_name: "nimetus",
+                            constraints: [],
+                            data_type: "smallint",
+                            ordinal_position: 2,
+                            table_alias: "",
+                            table_id: 1,
+                            table_name: "amet",
+                            table_schema: "public"
+                        },
+                        {
+                            column_name: "kirjeldus",
+                            constraints: [],
+                            data_type: "smallint",
+                            ordinal_position: 3,
+                            table_alias: "",
+                            table_id: 1,
+                            table_name: "amet",
+                            table_schema: "public"
+                        }
+                    ]
+                },
+                {
+                    id: 2,
+                    table_alias: "",
+                    table_name: "asukoht",
+                    table_schema: "public",
+                    table_type: "BASE TABLE",
+                    columns: [
+                        {
+                            column_name: "asukoht_kood",
+                            constraints: [],
+                            data_type: "smallint",
+                            ordinal_position: 1,
+                            table_alias: "",
+                            table_id: 1,
+                            table_name: "asukoht",
+                            table_schema: "public"
+                        },
+                        {
+                            column_name: "nimetus",
+                            constraints: [],
+                            data_type: "smallint",
+                            ordinal_position: 2,
+                            table_alias: "",
+                            table_id: 1,
+                            table_name: "asukoht",
+                            table_schema: "public"
+                        }
+                    ]
+                }
+            ],
+            joins: [{
+                color: "#ddbf4f",
+                conditions: [],
+                id: 0,
+                main_table: {
+                    table_alias: "",
+                    table_name: "",
+                    table_schema: "",
+                    columns: [
+                        {
+                            column_name: "asukoht_kood",
+                            constraints: [],
+                            data_type: "smallint",
+                            ordinal_position: 1,
+                            table_alias: "",
+                            table_id: 2,
+                            table_name: "asukoht",
+                            table_schema: "public"
+                        },
+                        {
+                            column_name: "nimetus",
+                            constraints: [],
+                            data_type: "smallint",
+                            ordinal_position: 2,
+                            table_alias: "",
+                            table_id: 2,
+                            table_name: "asukoht",
+                            table_schema: "public"
+                        }
+                    ]
+                },
+                type: "inner"
+            }],
+            language: {code: "eng"},
+            updateJoins: jest.fn(),
+            addJoin: jest.fn()
+        }
     });
 
     test('JoinList renders with default components', () => {
 
-        component = shallow(<JoinList language={{code: 'eng'}} tables={tables} joins={joins} updateJoins={jest.fn()} addJoin={jest.fn()}/>);
+        component = shallow(<JoinList {...props}/>);
 
         expect(component).toMatchSnapshot()
-    })
+    });
+
+    test('JoinList handleAddJoin calls addJoin once', () => {
+        component = shallow(<JoinList {...props}/>);
+
+        component.instance().handleAddJoin();
+
+        expect(props.addJoin.mock.calls.length).toBe(1);
+    });
+
+    test('JoinList onDragEnd calls updateJoins once', () => {
+        component = shallow(<JoinList {...props}/>);
+
+        const result = {
+            destination: {
+                droppableId: "drop-id-1",
+                index: 0
+            },
+            source: {
+                droppableId: "drop-id-2",
+                index: 1
+            },
+            draggableId: "id-1"
+        };
+
+        component.instance().onDragEnd(result);
+
+        expect(props.updateJoins.mock.calls.length).toBe(1);
+    });
 });

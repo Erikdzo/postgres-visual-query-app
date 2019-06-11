@@ -67,5 +67,25 @@ describe('Component: QueryColumnList', () => {
         component = shallow(<QueryColumnList {...props}/>);
 
         expect(component).toMatchSnapshot()
+    });
+
+    test('QueryColumnList onDragEnd calls updateColumns once', () => {
+        component = shallow(<QueryColumnList {...props}/>);
+
+        const result = {
+            destination: {
+                droppableId: "drop-id-1",
+                index: 0
+            },
+            source: {
+                droppableId: "drop-id-2",
+                index: 1
+            },
+            draggableId: "id-1"
+        };
+
+        component.instance().onDragEnd(result);
+
+        expect(props.updateColumns.mock.calls.length).toBe(1);
     })
 });
