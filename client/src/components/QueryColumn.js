@@ -115,10 +115,10 @@ export class QueryColumn extends Component {
 
     handleSwitch(e) {
         let column = _.cloneDeep(this.props.data);
-
+        
         column = {
             ...column,
-            [e.target.id]: !column[e.target.id]
+            [e.target.name]: !column[e.target.name]
         };
         this.props.updateColumn(column);
     }
@@ -158,8 +158,9 @@ export class QueryColumn extends Component {
                                                 <div className=" col-auto d-flex">
                                                     <CustomInput className="" type="checkbox"
                                                                  id={`display-${this.props.data.id}`}
+                                                                 name="display_in_query"
                                                                  checked={this.props.data.display_in_query}
-                                                                 onChange={() => this.handleSwitch("display_in_query")}
+                                                                 onChange={this.handleSwitch}
                                                     />
                                                     <small
                                                         className="mr-2 align-self-center text-muted">{`${this.props.data.table_schema}`}</small>
@@ -171,30 +172,34 @@ export class QueryColumn extends Component {
                                                 <div className="col-auto">
                                                     <FormGroup>
 
-                                                        <CustomInput className="mr-2 "
+                                                        <CustomInput className="mr-2"
                                                                      disabled={this.props.distinct} type="switch"
-                                                                     id="column_distinct_on"
+                                                                     id={`column-distinct-on-${this.props.data.id}`}
+                                                                     name="column_distinct_on"
                                                                      checked={this.props.data.column_distinct_on}
                                                                      onChange={this.handleSwitch}
                                                                      label="DISTINCT ON"/>
                                                         <CustomInput className="mr-2"
                                                                      type="switch"
-                                                                     id="column_group_by"
+                                                                     id={`column-group-by-${this.props.data.id}`}
+                                                                     name="column_group_by"
                                                                      checked={this.props.data.column_group_by}
                                                                      onChange={this.handleSwitch}
                                                                      label="GROUP BY"/>
 
                                                         <CustomInput className="mr-2"
                                                                      type="switch"
-                                                                     id="column_order"
+                                                                     id={`column-order-${this.props.data.id}`}
+                                                                     name="column_order"
                                                                      checked={this.props.data.column_order}
                                                                      onChange={this.handleSwitch}
                                                                      label="ORDER"/>
-
-                                                        <CustomInput className={column_order_visibility} type="switch"
-                                                                     id="column_order_dir"
+                                                        <CustomInput className={column_order_visibility} 
+                                                                     type="switch"
+                                                                     id={`column-order-dir-${this.props.data.id}`}
+                                                                     name="column_order_dir"
                                                                      checked={this.props.data.column_order_dir}
-                                                                     onChange={"column_order_dir"}
+                                                                     onChange={this.handleSwitch}
                                                                      label={order_direction}/>
 
                                                     </FormGroup>
